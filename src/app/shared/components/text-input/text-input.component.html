@@ -1,0 +1,16 @@
+
+<label>{{label}}</label>
+<mat-form-field class="custom-mat-input" [class.invalid-input]="mensagemErroAplicada">
+    <input 
+        (focusout)="onFocusout()" 
+        (focus)="onFocusin()"
+        matInput 
+        [formControl]="formControlConfig.controle" 
+        [errorStateMatcher]="matcher" 
+        [placeholder]="placeHolder"
+    >
+
+    <mat-error *ngIf="mensagemErroAtual">
+        {{mensagemErroAtual}}
+    </mat-error>
+</mat-form-field>

@@ -1,0 +1,8 @@
+<button 
+    (click)="onClick"
+    class="button"
+    [class.width-100]="grownWidth"
+    [attr.style]="backgroundColor? 'background-color:' + backgroundColor + ';' : ''">
+    <ng-content></ng-content>
+    <p>{{text}}</p>
+</button>

@@ -1,0 +1,11 @@
+<label>{{label}}</label>
+<mat-form-field class="custom-mat-input" [class.invalid-input]="mensagemErroAplicada" appearance="fill">
+    <input 
+        [formControl]="formControlConfig.controle"
+        [errorStateMatcher]="matcher"
+        matInput 
+        [ngxTimepicker]="picker">
+
+    <ngx-material-timepicker #picker></ngx-material-timepicker>
+</mat-form-field>
+<mat-error *ngIf="mensagemErroAtual">{{mensagemErroAtual}}</mat-error>

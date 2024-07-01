@@ -1,0 +1,19 @@
+<label>{{label}}</label>
+<mat-form-field class="custom-mat-input" [class.invalid-input]="mensagemErroAplicada">
+    <input 
+        (focusout)="onFocusout()" 
+        (focus)="onFocusin()"
+        (dateInput)="onDateInput($event)"
+        [formControl]="formControlConfig.controle"
+        [errorStateMatcher]="matcher"
+        maskToDataInput
+        [matDatepicker]="picker"
+        matInput
+    />
+
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    
+</mat-form-field>
+<mat-error *ngIf="mensagemErroAtual">{{mensagemErroAtual}}</mat-error>
+

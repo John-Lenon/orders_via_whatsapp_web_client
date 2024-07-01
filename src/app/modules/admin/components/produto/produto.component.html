@@ -1,0 +1,50 @@
+
+<form>   
+    <app-text-input [formControlConfig]="controlesFormulario.nome" [label]="'Nome'" [placeHolder]="'Digite aqui seu nome'">
+    </app-text-input>
+    <br />
+    <br />
+         
+    <app-text-input [formControlConfig]="controlesFormulario.email" [label]="'E-Mail'">
+    </app-text-input>
+
+    <br />
+    <br />
+    <app-select-list-input
+        [formControlConfig]="controlesFormulario.produtoEscolhido"
+        [label]="'Lista de Produtos'"
+        [listaItens]="listaDeProdutos">    
+    </app-select-list-input>
+
+    <br />
+    <br />
+    <app-multi-select-list-input
+        [formControlConfig]="controlesFormulario.multiplosProdutos"
+        [label]="'Lista de Produtos'"
+        [listaItens]="listaMultiplosProdutos"
+    >
+    </app-multi-select-list-input>
+    
+    <br/>
+    <br/>
+    <app-number-input
+        [formControlConfig]="controlesFormulario.valorDoProduto" 
+        [label]="'Valor do Produto'"
+        [maskType]="4">
+    </app-number-input>
+    <br />
+    <br />
+
+    <app-datetime-input 
+        [formControlConfig]="controlesFormulario.dataInicioOperacao"
+        [label]="'Data Início Operação'">
+    </app-datetime-input>
+
+    <app-time-input
+        [formControlConfig]="controlesFormulario.horarioFuncionamento"
+        label="Horário Funcionamento">
+
+    </app-time-input>
+
+    <app-button (click)="submitFormulario()" [text]="'Enviar Formulário'"></app-button>
+</form>

@@ -1,0 +1,129 @@
+/*
+Global styles
+*/
+thead > tr {
+    color: #FFF;
+    background-color: #3f51b5;
+}
+
+table {
+    box-shadow: none;
+}
+
+app-button  {
+    margin: 0px 10px 0px 0px;
+}
+
+mat-slide-toggle p {
+    color: #000000;
+    margin: 0px 0px 0px 0px;
+}
+
+mat-slide-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 30px;
+}
+
+mat-slide-toggle div {
+    height: 30px;
+}
+
+.container-acoes-menu {
+    padding: 10px;
+}
+
+/*
+Buttons
+*/
+.add-button {
+    background-color: #b2ffc9;
+    color: #5e5e5e;    
+}
+.add-button:hover, .add-button:hover span {
+    background-color: #4e8f62;
+    color: #FFF;
+}
+
+.update-button {
+    background-color: #fff99f;
+    color: #5e5e5e;
+}
+.update-button:hover, .update-button:hover span {
+    background-color: #a7a262;
+    color: #FFF;
+}
+
+.delete-button {
+    background-color: #ff9c9c;
+    color: #5e5e5e;
+}
+.delete-button:hover, .delete-button:hover span {
+    background-color: #ad6868;
+    color: #FFF;
+}
+
+.container-table-controllers {
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px #a5a5a5;
+}
+
+.controllers {
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 0px 0px;
+    height: 40px;
+    padding: 5px 5px 5px 10px;
+    overflow: auto;
+}
+
+.item-controller {
+    margin: 0px 10px 0px 0px;
+    cursor: pointer;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    min-height: 30px;
+    min-width: 30px;
+    padding: 4px 4px 4px 4px;
+}
+
+.icon span {
+    color: #333333;
+}
+
+.header-table {
+    background-color: #454545;
+    height: 50px;
+    color: #FFF;
+}
+
+.linha-table {
+    height: 35px;
+}
+
+.selected-row {
+    background-color: rgb(222, 224, 245);
+}
+
+.container-table {
+    border-start-end-radius: 10px;
+    border-start-start-radius: 10px;
+   
+    border: none;
+    min-width: 350px;
+    overflow: auto;
+}
+
+.footer-paginacao {
+    background-color: #FFF;
+    border-end-end-radius: 10px;
+    border-end-start-radius: 10px;
+    padding-bottom: 10px;
+}

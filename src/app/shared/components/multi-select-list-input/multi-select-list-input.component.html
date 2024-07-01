@@ -1,0 +1,17 @@
+<p>{{label}}</p>
+<mat-form-field class="custom-mat-input">
+    <mat-select 
+        [class.invalid-input]="mensagemErroAplicada"
+        multiple 
+        [class.invalid-input]="mensagemErroAplicada"
+        [formControl]="formControlConfig.controle" 
+        [errorStateMatcher]="matcher">
+      
+      <div *ngFor="let item of listaItens">
+        <mat-option [value]="item">{{item.viewValue}}</mat-option>
+      </div>
+    </mat-select>
+    
+    <mat-error *ngIf="mensagemErroAtual">{{mensagemErroAtual}}</mat-error>
+
+</mat-form-field>

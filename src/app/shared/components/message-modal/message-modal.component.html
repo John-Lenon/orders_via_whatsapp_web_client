@@ -1,0 +1,24 @@
+<div class="modal-container">
+    <div class="elementos-modal">        
+        <mat-dialog-content class="modal-content">
+            <div class="icon-question">    
+                <mat-icon
+                    aria-hidden="false"
+                    fontIcon="question_mark">
+                </mat-icon>
+            </div>
+            <p class="text-content">{{data.textMessage}}</p>
+        </mat-dialog-content>
+        
+        <div *ngIf="data.textConfirmButton && data.textCancelButton" class="modal-footer">  
+            <app-button class="mutiple-button" (click)="onNoClick()" [text]="data.textCancelButton" [backgroundColor]="'#ff6464'"></app-button>             
+            <app-button class="mutiple-button" (click)="onConfirmClick()" [text]="data.textConfirmButton"></app-button>                
+        </div>
+
+        <div *ngIf="data.textConfirmButton && !data.textCancelButton" class="modal-footer">                
+            <app-button (click)="onConfirmClick()" [text]="data.textConfirmButton"></app-button>    
+        </div>
+   
+    </div>
+</div>
+

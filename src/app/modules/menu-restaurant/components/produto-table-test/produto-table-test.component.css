@@ -1,0 +1,20 @@
+.item-controller {
+    margin: 0px 10px 0px 0px;
+    cursor: pointer;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    min-height: 30px;
+    min-width: 30px;
+    background-color:#777777;
+    padding: 4px 4px 4px 4px;
+}
+
+.icon:hover, .icon:hover span {
+    background-color: #464646;
+    color: #FFF;
+}

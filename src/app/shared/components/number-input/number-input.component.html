@@ -1,0 +1,63 @@
+<label>{{label}}</label>
+<mat-form-field class="custom-mat-input" [class.invalid-input]="mensagemErroAplicada">
+
+    <input
+        *ngIf="maskType === 1"
+        mask="separator.0"
+        thousandSeparator=""
+        [allowNegativeNumbers]="true"
+
+        (focusout)="onFocusout()" 
+        (focus)="onFocusin()"
+        type="text" 
+        matInput 
+        [formControl]="formControlConfig.controle" 
+        [errorStateMatcher]="matcher" 
+        [placeholder]="placeHolder"
+    >
+    <input
+        *ngIf="maskType === 2"
+        mask="separator.2"
+        thousandSeparator="."
+        [allowNegativeNumbers]="true"
+        
+        (focusout)="onFocusout()" 
+        (focus)="onFocusin()"
+        type="text" 
+        matInput 
+        [formControl]="formControlConfig.controle" 
+        [errorStateMatcher]="matcher" 
+        [placeholder]="placeHolder"
+    >
+    <input
+        *ngIf="maskType === 3"
+        mask="(99) 9 9999-9999"
+        [showMaskTyped]="true"
+
+        (focusout)="onFocusout()" 
+        (focus)="onFocusin()"
+        type="text" 
+        matInput 
+        [formControl]="formControlConfig.controle" 
+        [errorStateMatcher]="matcher" 
+        [placeholder]="placeHolder"
+    >
+    <input
+        *ngIf="maskType === 4"
+        mask="99.999.999/9999-99"
+        [showMaskTyped]="true"
+    
+        (focusout)="onFocusout()" 
+        (focus)="onFocusin()"
+        (onChange)="onChange($event)"
+        type="text" 
+        matInput 
+        [formControl]="formControlConfig.controle" 
+        [errorStateMatcher]="matcher" 
+        [placeholder]="placeHolder"
+    >
+    <mat-error *ngIf="mensagemErroAplicada">
+        {{mensagemErroAplicada}}
+    </mat-error>
+
+</mat-form-field>

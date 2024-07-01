@@ -1,0 +1,23 @@
+
+
+<p>{{label}}</p>
+<mat-form-field class="custom-mat-input">
+  <mat-select 
+    (focusout)="onFocusout()"
+    [class.invalid-input]="mensagemErroAplicada"
+    [disabled]="false"
+    [formControl]="formControlConfig.controle" 
+    [errorStateMatcher]="matcher"
+    [(ngModel)]="selectedValue" 
+    (selectionChange)="onSelectionChange($event)" >
+    
+    <mat-option>Nenhum</mat-option>
+    <div *ngFor="let item of listaItens">
+      <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
+    </div>
+  
+  </mat-select>
+
+  <mat-error *ngIf="mensagemErroAtual">{{mensagemErroAtual}}</mat-error>
+
+</mat-form-field>
