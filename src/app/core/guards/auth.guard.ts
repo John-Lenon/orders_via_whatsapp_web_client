@@ -13,7 +13,6 @@ class AuthGuard {
     if(token){
       return true;
     } else {
-
       this.router.navigateByUrl('auth/login');
       return false;
     } 

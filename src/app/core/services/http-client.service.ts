@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Observable, catchError, map, of, throwError } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Response } from '../models/http/response';
 import { HttpMethod } from '../enums/HttpMethod';
@@ -57,12 +57,16 @@ export class HttpClientService {
 
     private mapContentObservable<TResult>() {
         return map((response: Response<TResult>)  => {
+            debugger
             return response?.dados;
         })
     };
 
     private handleErrorObservable<TResult>()  {
         return catchError<TResult, Observable<TResult>>((erro: any, caught: Observable<TResult>) => {
+            debugger
+
+            //dlkjdçlkjdçl
             return new Observable<TResult>();
         })
     };
