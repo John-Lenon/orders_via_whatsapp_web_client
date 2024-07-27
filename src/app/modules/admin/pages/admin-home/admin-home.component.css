@@ -1,6 +1,5 @@
 :host {
   [admin-content-app] {
-    padding-left: 70px;
-    width: 100%;
+    margin-left: 70px;
   }
 }

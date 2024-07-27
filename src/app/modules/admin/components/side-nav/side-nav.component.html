@@ -6,9 +6,9 @@
 >
   <div menu-links>
     <a
-      [routerLink]="'gerenciar-cardapio'"
-      (click)="setSelectedButton('gerenciar-cardapio')"
-      [ngClass]="{ selected: selectedButton === 'gerenciar-cardapio' }"
+      [routerLink]="'menu-management'"
+      (click)="setSelectedButton('menu-management')"
+      [ngClass]="{ selected: selectedButton === 'menu-management' }"
       class="nav-link-icon"
     >
       <mat-icon>restaurant</mat-icon>
@@ -26,9 +26,9 @@
     </a>
 
     <a
-      [routerLink]="'area-entrega'"
-      (click)="setSelectedButton('area-entrega')"
-      [ngClass]="{ selected: selectedButton === 'area-entrega' }"
+      [routerLink]="'delivery-area'"
+      (click)="setSelectedButton('delivery-area')"
+      [ngClass]="{ selected: selectedButton === 'delivery-area' }"
       class="nav-link-icon"
     >
       <mat-icon>map</mat-icon>
@@ -36,13 +36,23 @@
     </a>
 
     <a
-      [routerLink]="'gerenciar-usuarios'"
-      (click)="setSelectedButton('gerenciar-usuarios')"
-      [ngClass]="{ selected: selectedButton === 'gerenciar-usuarios' }"
+      [routerLink]="'users'"
+      (click)="setSelectedButton('users')"
+      [ngClass]="{ selected: selectedButton === 'users' }"
       class="nav-link-icon"
     >
       <mat-icon>person</mat-icon>
       <span *ngIf="sidenavExpanded">Gerenciar Usuários</span>
+    </a>
+
+    <a
+      [routerLink]="'manage-company'"
+      (click)="setSelectedButton('manage-company')"
+      [ngClass]="{ selected: selectedButton === 'manage-company' }"
+      class="nav-link-icon"
+    >
+      <mat-icon>business</mat-icon>
+      <span *ngIf="sidenavExpanded">Gerenciar Empresa</span>
     </a>
   </div>
 
