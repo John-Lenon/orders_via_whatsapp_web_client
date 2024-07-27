@@ -1,0 +1,53 @@
+<div
+  sidenav
+  [ngClass]="{ expanded: sidenavExpanded }"
+  (mouseenter)="abrirSidenav()"
+  (mouseleave)="fecharSidenav()"
+>
+  <div menu-links>
+    <a
+      [routerLink]="'gerenciar-cardapio'"
+      (click)="setSelectedButton('gerenciar-cardapio')"
+      [ngClass]="{ selected: selectedButton === 'gerenciar-cardapio' }"
+      class="nav-link-icon"
+    >
+      <mat-icon>restaurant</mat-icon>
+      <span *ngIf="sidenavExpanded">Gerenciar Cardápio</span>
+    </a>
+
+    <a
+      [routerLink]="'nps'"
+      (click)="setSelectedButton('nps')"
+      [ngClass]="{ selected: selectedButton === 'nps' }"
+      class="nav-link-icon"
+    >
+      <mat-icon>star</mat-icon>
+      <span *ngIf="sidenavExpanded">NPS</span>
+    </a>
+
+    <a
+      [routerLink]="'area-entrega'"
+      (click)="setSelectedButton('area-entrega')"
+      [ngClass]="{ selected: selectedButton === 'area-entrega' }"
+      class="nav-link-icon"
+    >
+      <mat-icon>map</mat-icon>
+      <span *ngIf="sidenavExpanded">Àrea de Entrega</span>
+    </a>
+
+    <a
+      [routerLink]="'gerenciar-usuarios'"
+      (click)="setSelectedButton('gerenciar-usuarios')"
+      [ngClass]="{ selected: selectedButton === 'gerenciar-usuarios' }"
+      class="nav-link-icon"
+    >
+      <mat-icon>person</mat-icon>
+      <span *ngIf="sidenavExpanded">Gerenciar Usuários</span>
+    </a>
+  </div>
+
+  <div *ngIf="sidenavExpanded" meu-perfil>
+    <mat-icon class="icon-perfil-user">person_outline</mat-icon>
+    <span>Meu Perfil</span>
+  </div>
+</div>

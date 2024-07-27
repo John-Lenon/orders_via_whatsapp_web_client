@@ -1,37 +1,38 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientService } from 'src/app/core/services/http-client.service';
 import { TableConfigs } from 'src/app/shared/components/table/table.component';
 import { Produto } from '../../models/produto';
-import { EnumStatusProduto } from '../../enumeradores/enum-status-produto'
-import { HttpClientService } from 'src/app/core/services/http-client.service';
 
 @Component({
   selector: 'app-produto-table-test',
   templateUrl: './produto-table-test.component.html',
-  styleUrls: ['./produto-table-test.component.css']
+  styleUrls: ['./produto-table-test.component.css'],
 })
-export class ProdutoTableTestComponent extends TableConfigs<Produto> implements OnInit {
-  
-  constructor(private httpClient: HttpClientService) { 
+export class ProdutoTableTestComponent
+  extends TableConfigs<Produto>
+  implements OnInit
+{
+  constructor(private httpClient: HttpClientService) {
     super([
-      { columnName: 'nome', descriptionHeaderColumn: 'Nome' }, 
-      { columnName: 'descricao', descriptionHeaderColumn: 'Descrição' }, 
+      { columnName: 'nome', descriptionHeaderColumn: 'Nome' },
+      { columnName: 'descricao', descriptionHeaderColumn: 'Descrição' },
       { columnName: 'preco', descriptionHeaderColumn: 'Preço' },
-      { columnName: 'codigo', descriptionHeaderColumn: 'Código'}, 
-      { columnName: 'caminhoImagem', descriptionHeaderColumn: 'Caminho Imagem' }, 
-      { columnName: 'status', descriptionHeaderColumn: 'Status' }, 
-      { columnName: 'prioridade', descriptionHeaderColumn: 'Prioridade' }, 
-    ]);    
+      { columnName: 'codigo', descriptionHeaderColumn: 'Código' },
+      {
+        columnName: 'caminhoImagem',
+        descriptionHeaderColumn: 'Caminho Imagem',
+      },
+      { columnName: 'status', descriptionHeaderColumn: 'Status' },
+      { columnName: 'prioridade', descriptionHeaderColumn: 'Prioridade' },
+    ]);
   }
 
   ngOnInit(): void {
     this.getAllProductsToGrid();
   }
 
-  getAllProductsToGrid() : void {
-    debugger
-    this.httpClient.get('produto').subscribe((result) => {
-      debugger
-    });
+  getAllProductsToGrid(): void {
+    this.httpClient.get('produto').subscribe((result) => {});
     // this.dataSource.data = [
     //   {
     //     descricao: 'Salmão, Cream Cheese e Cebolinha',
@@ -108,11 +109,10 @@ export class ProdutoTableTestComponent extends TableConfigs<Produto> implements 
     // ];
   }
 
-  novoProduto() : void {
-    debugger
-
-    var produtosSelecionados = this.dataSource.data.filter(x => x.selected).map(x => x.nome);
-    alert(`Produtos selecionados ${produtosSelecionados.join(',')}`)
-
+  novoProduto(): void {
+    var produtosSelecionados = this.dataSource.data
+      .filter((x) => x.selected)
+      .map((x) => x.nome);
+    alert(`Produtos selecionados ${produtosSelecionados.join(',')}`);
   }
 }
