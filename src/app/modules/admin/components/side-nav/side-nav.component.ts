@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,7 +7,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SideNavComponent {
   selectedButton: string = '';
-  sidenavExpanded = false;
+  sidenavExpanded: boolean = false;
+  isMobile: boolean = window.innerWidth <= 600;
+
+  toggleSidenav() {
+    this.sidenavExpanded = !this.sidenavExpanded;
+  }
+
+  /////
 
   abrirSidenav() {
     this.sidenavExpanded = true;

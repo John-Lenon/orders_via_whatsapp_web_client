@@ -1,8 +1,14 @@
+<div sidenav-toggle-butoon>
+  <button mat-icon-button *ngIf="isMobile" (click)="toggleSidenav()">
+    <mat-icon>{{ sidenavExpanded ? "close" : "menu" }}</mat-icon>
+  </button>
+</div>
+
 <div
   sidenav
   [ngClass]="{ expanded: sidenavExpanded }"
-  (mouseenter)="abrirSidenav()"
-  (mouseleave)="fecharSidenav()"
+  (mouseenter)="!isMobile && abrirSidenav()"
+  (mouseleave)="!isMobile && fecharSidenav()"
 >
   <div menu-links>
     <a
