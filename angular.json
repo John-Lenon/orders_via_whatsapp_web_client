@@ -67,10 +67,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "OrdersViaWhatsAppWebClient:build:production"
+              "buildTarget": "OrdersViaWhatsAppWebClient:build:production"
             },
             "development": {
-              "browserTarget": "OrdersViaWhatsAppWebClient:build:development"
+              "buildTarget": "OrdersViaWhatsAppWebClient:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "OrdersViaWhatsAppWebClient:build"
+            "buildTarget": "OrdersViaWhatsAppWebClient:build"
           }
         },
         "test": {
