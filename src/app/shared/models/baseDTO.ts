@@ -1,3 +1,3 @@
-export class BaseModel {
-    selected?: boolean;
+export interface BaseModel {
+  selected?: boolean;
 }

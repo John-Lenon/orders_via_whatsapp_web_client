@@ -6,12 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: MenuRestaurantComponent,
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MenuRestaurantRoutingModule { }
+export class MenuRestaurantRoutingModule {}

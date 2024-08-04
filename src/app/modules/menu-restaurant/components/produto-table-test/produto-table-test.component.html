@@ -1,34 +1,20 @@
-<app-table 
-    [configColumnsTable]="configColumns"
-    [dataSource]="dataSource"
-    [displayColumns]="displayColumns"
-    
-    [ativarSelecaoItens]="true"
-    [habilitarDelecao]="false"
-    [habilitarEdicao]="true"
-    [habilitarInclusao]="true"
-    [habilitarMultisselecao]="true"
-    
-    [itemSelecionado]="itemSelecionado"
-    (onAdd)="novoProduto()"
-    (onLinhaSelecionada)="selecionarLinha($event)">
+<app-table
+  [configColumnsTable]="configColumns"
+  [dataSource]="dataSource"
+  [displayColumns]="displayColumns"
+  [ativarSelecaoItens]="true"
+  [habilitarDelecao]="true"
+  [habilitarEdicao]="true"
+  [habilitarInclusao]="true"
+  [habilitarMultisselecao]="true"
+  [itemSelecionado]="itemSelecionado"
+  (onAdd)="novoProduto()"
+  (onDelete)="deletarProdutos()"
+  (onLinhaSelecionada)="selecionarLinha($event)"
+>
+
 
 </app-table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- <div novo-controller>
     <div class="item-controller icon">
@@ -42,7 +28,7 @@
         <button mat-menu-item>
             <span>Realizar Ação X</span>
         </button>
-        <button mat-menu-item> 
+        <button mat-menu-item>
             <span>Teste outra ação</span>
         </button>
         <button mat-menu-item [matMenuTriggerFor]="invertebrates">Animais Marinhos</button>
@@ -57,3 +43,4 @@
         <button mat-menu-item>Horseshoe crabs</button>
     </mat-menu>
 </div> -->
+

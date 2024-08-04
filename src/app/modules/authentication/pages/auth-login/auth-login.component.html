@@ -1,1 +1,48 @@
-<p>auth-login works!</p>
+<div class="card-container form-container">
+  <h2>Administração</h2>
+  <div class="circulo-img">
+    <img src="../../../../../assets/computador.png" width="100" height="100" />
+  </div>
+
+  <img src="" />
+  <div class="list-inputs">
+    <div class="input-container">
+      <div>
+        <span class="material-symbols-outlined icone">mail</span>
+        <span>E-mail</span>
+      </div>
+      <app-text-input [formControlConfig]="controlesFormulario.email">
+      </app-text-input>
+    </div>
+
+    <div class="input-container">
+      <div>
+        <span class="material-symbols-outlined icone">lock</span>
+        <span>Senha</span>
+      </div>
+      <app-text-input
+        [formControlConfig]="controlesFormulario.senha"
+        [type]="'password'"
+      >
+      </app-text-input>
+    </div>
+
+    <div class="input-container">
+      <div class="checkbox">
+        <input
+          type="checkbox"
+          [checked]="checkboxStoreLoginData"
+          (change)="storeLoginData($event)"
+        />
+        <span>Salvar e-mail e senha</span>
+      </div>
+    </div>
+  </div>
+
+  <app-button
+    (click)="submitFormulario()"
+    [grownWidth]="true"
+    [backgroundColor]="'#000000'"
+    [text]="'Login'"
+  ></app-button>
+</div>

@@ -3,3 +3,20 @@
     margin-left: 70px;
   }
 }
+
+.header-company {
+  height: 40px;
+  display: flex;
+  align-items: center;
+
+  & .titulo-company {
+    font-size: 1.3rem;
+    margin-left: 15px;
+    font-weight: 550;
+    color: #595959;
+  }
+}
+
+.container-router {
+  margin: 15px 15px 15px 15px;
+}

@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { HttpMethod } from '../enums/HttpMethod';
-import { Response } from '../models/http/response';
+import { HttpMethod } from '../enums/enum-http-method';
+import { HttpResponse } from '../http/http-response';
 
 @Injectable({
   providedIn: 'root',
@@ -75,7 +75,7 @@ export class HttpClientService {
       body,
     };
 
-    const requestResult = this.httpClient.request<Response<TResult>>(
+    const requestResult = this.httpClient.request<HttpResponse<TResult>>(
       method,
       this.apiUrl + path ?? '',
       options
@@ -89,7 +89,7 @@ export class HttpClientService {
   }
 
   private mapContentObservable<TResult>() {
-    return map((response: Response<TResult>) => {
+    return map((response: HttpResponse<TResult>) => {
       return response?.dados;
     });
   }

@@ -6,18 +6,32 @@ import { DeliveryAreaComponent } from './pages/delivery-area/delivery-area.compo
 import { MenuManagementComponent } from './pages/menu-management/menu-management.component';
 import { NpsComponent } from './pages/nps/nps.component';
 import { UsersComponent } from './pages/users/users.component';
+import { RoutePathAdmin } from './utils/route-path-admin';
 
 const routes: Routes = [
   {
-    path: '',
+    path: RoutePathAdmin.EMPTY,
     component: AdminHomeComponent,
     children: [
-      { path: '', redirectTo: 'menu-management', pathMatch: 'full' },
-      { path: 'menu-management', component: MenuManagementComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'manage-company', component: CompanyManagementComponent },
-      { path: 'delivery-area', component: DeliveryAreaComponent },
-      { path: 'nps', component: NpsComponent },
+      {
+        path: RoutePathAdmin.EMPTY,
+        redirectTo: RoutePathAdmin.MENU_MANAGEMENT,
+        pathMatch: 'full',
+      },
+      {
+        path: RoutePathAdmin.MENU_MANAGEMENT,
+        component: MenuManagementComponent,
+      },
+      { path: RoutePathAdmin.USERS, component: UsersComponent },
+      {
+        path: RoutePathAdmin.MANAGE_COMPANY,
+        component: CompanyManagementComponent,
+      },
+      {
+        path: RoutePathAdmin.DELIVERY_AREA,
+        component: DeliveryAreaComponent,
+      },
+      { path: RoutePathAdmin.NPS, component: NpsComponent },
     ],
   },
 ];

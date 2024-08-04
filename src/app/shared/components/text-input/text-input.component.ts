@@ -6,10 +6,9 @@ import { CustomErrorStateMatcher } from '../../utils/custom-error-state-matcher'
 @Component({
   selector: 'app-text-input',
   templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.css']
+  styleUrls: ['./text-input.component.css'],
 })
 export class TextInputComponent extends InputBase implements OnInit {
-  
   @Input()
   formControlConfig!: FormControlConfig;
 
@@ -19,8 +18,10 @@ export class TextInputComponent extends InputBase implements OnInit {
   @Input()
   placeHolder: string = '';
 
+  @Input()
+  type?: string;
+
   ngOnInit(): void {
     this.matcher = new CustomErrorStateMatcher(this.formControlConfig, this);
   }
 }
-

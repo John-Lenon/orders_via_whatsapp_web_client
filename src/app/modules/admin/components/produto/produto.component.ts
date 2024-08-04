@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { EnumStatusProduto } from 'src/app/modules/menu-restaurant/enumeradores/enum-status-produto';
+import { EnumStatusProduto } from 'src/app/modules/menu-restaurant/enums/enum-status-produto';
 import { Produto } from 'src/app/modules/menu-restaurant/models/produto';
 import { FormBase } from 'src/app/shared/components/base/form-base';
 import { OptionToSelectList } from 'src/app/shared/models/item-select-list';
@@ -78,44 +78,46 @@ export class ProdutoComponent extends FormBase {
   listaMultiplosProdutos: OptionToSelectList[] = [
     {
       viewValue: 'Produto 01',
-      value: new Produto(
-        '2828',
-        1,
-        EnumStatusProduto.ATIVO,
-        23.99,
-        'Temaki 11',
-        'Temaki 11',
-        'teste/teste01'
-      ),
+      value: {
+        codigo: '2828',
+        prioridade: 1,
+        status: EnumStatusProduto.ATIVO,
+        preco: 23.99,
+        descricao: 'Temaki 11',
+        nome: 'Temaki 11',
+        caminhoImagem: 'teste/teste01',
+      },
     },
     {
       viewValue: 'Produto 02',
-      value: new Produto(
-        '2222',
-        2,
-        EnumStatusProduto.ATIVO,
-        988.99,
-        'Temaki 02',
-        'Temaki 02',
-        'teste/teste01'
-      ),
+      value: {
+        codigo: '22222',
+        prioridade: 1,
+        status: EnumStatusProduto.ATIVO,
+        preco: 222.99,
+        descricao: 'Temaki 22',
+        nome: 'Temaki 22',
+        caminhoImagem: 'teste/teste01',
+      },
     },
     {
       viewValue: 'Produto 03',
-      value: new Produto(
-        '33333',
-        3,
-        EnumStatusProduto.ATIVO,
-        1378.99,
-        'Temaki 03',
-        'Temaki 03',
-        'teste/teste01'
-      ),
+      value: {
+        codigo: '3333',
+        prioridade: 1,
+        status: EnumStatusProduto.ATIVO,
+        preco: 333.33,
+        descricao: 'Temaki 33',
+        nome: 'Temaki 33',
+        caminhoImagem: 'teste/teste01',
+      },
     },
   ];
 
   submitFormulario(): void {
     const novoProduto = this.getFormData<Produto>();
+
+    debugger;
     this.httpService
       .post<Produto, any>(novoProduto, 'produto')
       .subscribe(() => {});

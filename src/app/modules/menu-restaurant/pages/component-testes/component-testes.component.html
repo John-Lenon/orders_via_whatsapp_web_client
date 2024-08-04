@@ -2,14 +2,17 @@
 
 <hr />
 <app-button (click)="exibirCarrinho()" [text]="'Exibir Carrinho'"></app-button>
-<hr/>
+<hr />
 
-<app-button (click)="pedirParaConfirmarOperacao()" [text]="'Pedir para Confirmar'"></app-button>
+<app-button
+  (click)="pedirParaConfirmarOperacao()"
+  [text]="'Pedir para Confirmar'"
+></app-button>
 
-<hr/>
+<app-button (click)="showSnackBar()" [text]="'Show Snack Bar'"></app-button>
+
+<hr />
 <app-produto-table-test></app-produto-table-test>
-<hr/>
+<hr />
 <app-produto></app-produto>
-<hr/>
-
-
+<hr />

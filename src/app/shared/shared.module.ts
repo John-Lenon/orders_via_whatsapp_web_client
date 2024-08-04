@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ButtonComponent } from './components/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MessageModalComponent } from './components/message-modal/message-modal.component';
-import { TableComponent } from './components/table/table.component'
+import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -28,13 +28,27 @@ import { SelectListInputComponent } from './components/select-list-input/select-
 import { MultiSelectListInputComponent } from './components/multi-select-list-input/multi-select-list-input.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule, NativeDateAdapter } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+  MatDateFormats,
+  MatNativeDateModule,
+  NativeDateAdapter,
+} from '@angular/material/core';
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { MaskToDataInput } from './directives/mask-to-data-input';
-import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
+import {
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+  MatMomentDateModule,
+  MomentDateAdapter,
+} from '@angular/material-moment-adapter';
 import { TimeInputComponent } from './components/time-input/time-input.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { CardContainerComponent } from './components/card-container/card-container.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 const MY_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -47,7 +61,6 @@ const MY_DATE_FORMATS: MatDateFormats = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
-
 
 @NgModule({
   declarations: [
@@ -64,22 +77,24 @@ const MY_DATE_FORMATS: MatDateFormats = {
 
     // Attribute Directives
     MaskToDataInput,
-     TimeInputComponent
+    TimeInputComponent,
+    CardContainerComponent,
+    AlertComponent,
   ],
   imports: [
-    CommonModule, 
-    MatButtonModule, 
+    CommonModule,
+    MatButtonModule,
     MatDialogModule,
     MatIconModule,
-    MatPaginatorModule, 
-    MatTableModule, 
+    MatPaginatorModule,
+    MatTableModule,
     MatSortModule,
     MatSlideToggleModule,
 
-    MatToolbarModule, 
-    MatSidenavModule, 
-    MatListModule, 
-    MatCardModule, 
+    MatToolbarModule,
+    MatSnackBarModule,
+    MatListModule,
+    MatCardModule,
     MatMenuModule,
     MatInputModule,
     MatFormFieldModule,
@@ -92,10 +107,10 @@ const MY_DATE_FORMATS: MatDateFormats = {
     NgxMaterialTimepickerModule,
 
     NgxMaskDirective,
-    NgxMaskPipe
-  ], 
+    NgxMaskPipe,
+  ],
   exports: [
-    ModalComponent, 
+    ModalComponent,
     ButtonComponent,
     MessageModalComponent,
     TableComponent,
@@ -105,23 +120,29 @@ const MY_DATE_FORMATS: MatDateFormats = {
     MultiSelectListInputComponent,
     DatetimeInputComponent,
     TimeInputComponent,
+    CardContainerComponent,
+    AlertComponent,
 
-    MatPaginatorModule, 
-    MatTableModule, 
+    MatPaginatorModule,
+    MatTableModule,
     MatSortModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
   ],
   providers: [
-    { 
+    {
       provide: MAT_DIALOG_DATA,
-      useValue: {}
-    }, 
+      useValue: {},
+    },
     provideNgxMask(),
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS] }
-  ]
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+  ],
 })
-export class SharedModule { }
-
+export class SharedModule {}

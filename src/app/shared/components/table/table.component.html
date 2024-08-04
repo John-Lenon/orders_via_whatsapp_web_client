@@ -1,55 +1,81 @@
+<div
+  *ngIf="
+    ativarSelecaoItens ||
+    habilitarDelecao ||
+    habilitarInclusao ||
+    habilitarEdicao
+  "
+  class="controllers"
+>
+  <div
+    *ngIf="habilitarInclusao"
+    class="item-controller icon add-button"
+    (click)="adicionarItem($event)"
+  >
+    <span class="material-icons">add</span>
+  </div>
+  <div
+    *ngIf="quantidadeItensSelecionados <= 1 && habilitarEdicao"
+    (click)="updateItem($event)"
+    class="item-controller icon update-button"
+  >
+    <span class="material-symbols-outlined">edit</span>
+  </div>
+  <div
+    *ngIf="habilitarDelecao"
+    class="item-controller icon delete-button"
+    (click)="deletarItem($event)"
+  >
+    <span class="material-symbols-outlined">delete_forever</span>
+  </div>
 
-<div *ngIf="ativarSelecaoItens || habilitarDelecao || habilitarInclusao || habilitarEdicao" class="controllers">
-    <div *ngIf="habilitarInclusao" class="item-controller icon add-button" (click)="adicionarItem($event)">
-        <span class="material-icons">add</span>
-    </div>
-    <div *ngIf="quantidadeItensSelecionados <= 1 && habilitarEdicao" (click)="updateItem($event)" class="item-controller icon update-button">
-        <span class="material-symbols-outlined">edit</span>
-    </div>
-    <div *ngIf="habilitarDelecao" class="item-controller icon delete-button" (click)="deletarItem($event)">
-        <span class="material-symbols-outlined">delete_forever</span>
-    </div> 
-    
-    <ng-content select="[novo-controller]"></ng-content>    
+  <ng-content select="[novo-controller]"></ng-content>
 
-    <mat-slide-toggle
-        class="item-controller"
-        *ngIf="habilitarMultisselecao"
-        [color]="marcarTodosItens.color"
-        [checked]="marcarTodosItens.checked"
-        [disabled]="marcarTodosItens.disabled"
-        (click)="marcarOuDesmarcarTodosItens()">            
-        <p>Marcar Todos</p>
-    </mat-slide-toggle>
+  <mat-slide-toggle
+    class="item-controller"
+    *ngIf="habilitarMultisselecao"
+    [color]="marcarTodosItens.color"
+    [checked]="marcarTodosItens.checked"
+    [disabled]="marcarTodosItens.disabled"
+    (click)="marcarOuDesmarcarTodosItens()"
+  >
+    <p>Marcar Todos</p>
+  </mat-slide-toggle>
 </div>
 
 <div class="container-table-controllers">
-    <div class="container-table">
-        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-            
-            <div *ngFor="let config of configColumnsTable">
-                <ng-container matColumnDef="{{config.columnName}}" >
+  <div class="container-table">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <div *ngFor="let config of configColumnsTable">
+        <ng-container matColumnDef="{{ config.columnName }}">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            {{ config.descriptionHeaderColumn }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element[config.columnName] }}
+          </td>
+        </ng-container>
+      </div>
 
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header >
-                        {{config.descriptionHeaderColumn}}
-                    </th>
-                    <td mat-cell *matCellDef="let element">{{element[config.columnName]}}</td>
-                </ng-container>
-            </div>
-            
-            <tr class="header-table" mat-header-row *matHeaderRowDef="displayColumns" class="header-table"></tr>
-            <tr 
-                mat-row 
-                *matRowDef="let row; columns:displayColumns"
-                [class.selected-row]="row['selected']"
-                class="linha-table" 
-                (click)="selecionarLinhaTabela(row)">
-            </tr>
-        </table>
-    </div>
-    <mat-paginator class="footer-paginacao"
-        [pageSizeOptions]="[5, 10, 20, 50, 100]"
-        arial-label="Selecione a página dos produtos">
-    </mat-paginator>
-    
+      <tr
+        class="header-table"
+        mat-header-row
+        *matHeaderRowDef="displayColumns"
+        class="header-table"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayColumns"
+        [class.selected-row]="row['selected']"
+        class="linha-table"
+        (click)="selecionarLinhaTabela(row)"
+      ></tr>
+    </table>
+  </div>
+  <mat-paginator
+    class="footer-paginacao"
+    [pageSizeOptions]="[5, 10, 20, 50, 100]"
+    arial-label="Selecione a página dos produtos"
+  >
+  </mat-paginator>
 </div>

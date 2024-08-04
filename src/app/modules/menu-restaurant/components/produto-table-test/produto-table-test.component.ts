@@ -32,81 +32,9 @@ export class ProdutoTableTestComponent
   }
 
   getAllProductsToGrid(): void {
-    this.httpClient.get('produto').subscribe((result) => {});
-    // this.dataSource.data = [
-    //   {
-    //     descricao: 'Salmão, Cream Cheese e Cebolinha',
-    //     preco: 34.90,
-    //     codigo: '02JKD37SJ3133KS777',
-    //     caminhoImagem: '/teste/teste01',
-    //     status: 1,
-    //     prioridade: 0,
-    //     nome: 'Temaki 01'
-    //   },
-    //   {
-    //     descricao: 'Salmão Grelhado, Cream Cheese e Doritos',
-    //     preco: 31.55,
-    //     codigo: '38DJSL27DYWSS',
-    //     caminhoImagem: 'teste-02/teste-03/teste-04',
-    //     status: EnumStatusProduto.ATIVO,
-    //     prioridade: 0,
-    //     nome: 'Temaki 02'
-    //   },
-    //   {
-    //     descricao: 'Salmão Grelhado, Cream Cheese e Doritos',
-    //     preco: 31.55,
-    //     codigo: '38DJSL27DYWSS',
-    //     caminhoImagem: 'teste-02/teste-03/teste-04',
-    //     status: EnumStatusProduto.ATIVO,
-    //     prioridade: 0,
-    //     nome: 'Temaki 02'
-    //   },
-    //   {
-    //     descricao: 'Salmão Grelhado, Cream Cheese e Doritos',
-    //     preco: 31.55,
-    //     codigo: '38DJSL27DYWSS',
-    //     caminhoImagem: 'teste-02/teste-03/teste-04',
-    //     status: EnumStatusProduto.ATIVO,
-    //     prioridade: 0,
-    //     nome: 'Temaki 02'
-    //   },
-    //   {
-    //     descricao: 'Salmão Grelhado, Cream Cheese e Doritos',
-    //     preco: 31.55,
-    //     codigo: '38DJSL27DYWSS',
-    //     caminhoImagem: 'teste-02/teste-03/teste-04',
-    //     status: EnumStatusProduto.ATIVO,
-    //     prioridade: 0,
-    //     nome: 'Temaki 02'
-    //   },
-    //   {
-    //     descricao: 'Salmão Grelhado, Cream Cheese e Doritos',
-    //     preco: 31.55,
-    //     codigo: '38DJSL27DYWSS',
-    //     caminhoImagem: 'teste-02/teste-03/teste-04',
-    //     status: EnumStatusProduto.ATIVO,
-    //     prioridade: 0,
-    //     nome: 'Temaki 02'
-    //   },
-    //   {
-    //     descricao: 'Salmão Grelhado, Cream Cheese e Doritos',
-    //     preco: 31.55,
-    //     codigo: '38DJSL27DYWSS',
-    //     caminhoImagem: 'teste-02/teste-03/teste-04',
-    //     status: EnumStatusProduto.ATIVO,
-    //     prioridade: 0,
-    //     nome: 'Temaki 02'
-    //   },
-    //   {
-    //     descricao: 'Salmão Grelhado, Cream Cheese e Doritos',
-    //     preco: 31.55,
-    //     codigo: '38DJSL27DYWSS',
-    //     caminhoImagem: 'teste-02/teste-03/teste-04',
-    //     status: EnumStatusProduto.ATIVO,
-    //     prioridade: 0,
-    //     nome: 'Temaki 02'
-    //   }
-    // ];
+    this.httpClient.get<Produto[]>('produto').subscribe((listaProdutos) => {
+      this.dataSource.data = listaProdutos ?? [];
+    });
   }
 
   novoProduto(): void {
@@ -114,5 +42,13 @@ export class ProdutoTableTestComponent
       .filter((x) => x.selected)
       .map((x) => x.nome);
     alert(`Produtos selecionados ${produtosSelecionados.join(',')}`);
+  }
+
+  deletarProdutos(): void {
+    var itensSelecionados = this.dataSource.data?.filter(
+      (item) => item.selected
+    );
+    if (!itensSelecionados) return;
+    alert(`${itensSelecionados.map((x) => x.nome).join(', ')}`);
   }
 }

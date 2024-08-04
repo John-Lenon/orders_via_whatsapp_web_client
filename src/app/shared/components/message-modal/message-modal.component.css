@@ -19,7 +19,8 @@
     color: #000;
 }
 
-@media (min-width: 300px){
+
+@media (min-width: 300px) {
     .modal-container {
         display: flex;
         justify-content: center;
