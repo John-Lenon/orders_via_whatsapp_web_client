@@ -2,6 +2,12 @@
   [admin-content-app] {
     margin-left: 70px;
   }
+
+  @media screen and (max-width: 600px) {
+    [admin-content-app] {
+      margin-left: 0;
+    }
+  }
 }
 
 .header-company {

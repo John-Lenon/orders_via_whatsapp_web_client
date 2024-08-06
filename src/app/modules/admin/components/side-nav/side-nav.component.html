@@ -1,9 +1,14 @@
+<div sidenav-toggle-butoon>
+  <button mat-icon-button *ngIf="isMobile" (click)="toggleSidenav()">
+    <mat-icon>{{ sidenavExpanded ? "expand_more" : "more_vert" }}</mat-icon>
+  </button>
+</div>
+
 <div
   sidenav
   [ngClass]="{ expanded: sidenavExpanded }"
-  (mouseenter)="abrirSidenav()"
-  (mouseleave)="fecharSidenav()"
-  position="end"
+  (mouseenter)="!isMobile && abrirSidenav()"
+  (mouseleave)="!isMobile && fecharSidenav()"
 >
   <div menu-links>
     <a
@@ -13,7 +18,7 @@
       class="nav-link-icon"
     >
       <mat-icon>restaurant</mat-icon>
-      <span *ngIf="sidenavExpanded">Gerenciar Cardápio</span>
+      <span *ngIf="isMobile || sidenavExpanded">Gerenciar Cardápio</span>
     </a>
 
     <a
@@ -23,7 +28,7 @@
       class="nav-link-icon"
     >
       <mat-icon>star</mat-icon>
-      <span *ngIf="sidenavExpanded">NPS</span>
+      <span *ngIf="isMobile || sidenavExpanded">NPS</span>
     </a>
 
     <a
@@ -33,7 +38,7 @@
       class="nav-link-icon"
     >
       <mat-icon>map</mat-icon>
-      <span *ngIf="sidenavExpanded">Àrea de Entrega</span>
+      <span *ngIf="isMobile || sidenavExpanded">Àrea de Entrega</span>
     </a>
 
     <a
@@ -43,7 +48,7 @@
       class="nav-link-icon"
     >
       <mat-icon>person</mat-icon>
-      <span *ngIf="sidenavExpanded">Gerenciar Usuários</span>
+      <span *ngIf="isMobile || sidenavExpanded">Gerenciar Usuários</span>
     </a>
 
     <a
@@ -53,7 +58,7 @@
       class="nav-link-icon"
     >
       <mat-icon>business</mat-icon>
-      <span *ngIf="sidenavExpanded">Gerenciar Empresa</span>
+      <span *ngIf="isMobile || sidenavExpanded">Gerenciar Empresa</span>
     </a>
   </div>
 
