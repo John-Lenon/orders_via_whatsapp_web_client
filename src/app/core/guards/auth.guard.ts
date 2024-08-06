@@ -1,21 +1,28 @@
 import { Injectable, inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivateFn,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 class AuthGuard {
-  constructor(private router: Router) { };
+  constructor(private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : boolean {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
     const token = localStorage.getItem('auth_token');
-    
-    if(token){
+    if (token) {
       return true;
     } else {
       this.router.navigateByUrl('auth/login');
       return false;
-    } 
+    }
   }
 }
 

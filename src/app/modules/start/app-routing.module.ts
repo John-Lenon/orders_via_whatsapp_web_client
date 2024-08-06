@@ -23,7 +23,6 @@ const routes: Routes = [
   },
   {
     path: RoutePathStart.AUTH,
-    canActivate: [authGuard],
     loadChildren: () =>
       import('../authentication/authentication.module').then(
         (m) => m.AuthenticationModule

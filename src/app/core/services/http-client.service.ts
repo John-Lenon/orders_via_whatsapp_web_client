@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HttpMethod } from '../enums/enum-http-method';
 import { HttpResponse } from '../http/http-response';
+import { SpinLoadService } from 'src/app/shared/services/spin-load.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,14 +12,17 @@ import { HttpResponse } from '../http/http-response';
 export class HttpClientService {
   private apiUrl: string = environment.apiUrl;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private spinLoadService: SpinLoadService
+  ) {}
 
   public post<TBody, TResult>(
     body?: TBody,
     path?: string,
     contentType?: string
-  ): Observable<TResult | null> {
-    var resultResponse = this.sendHTTPRequest<TBody, TResult | null>(
+  ): Observable<HttpResponse<TResult>> {
+    var resultResponse = this.sendHTTPRequest<TBody, TResult>(
       HttpMethod.POST,
       body,
       path,
@@ -32,7 +36,7 @@ export class HttpClientService {
     path?: string,
     params?: HttpParams,
     contentType?: string
-  ): Observable<TResult | null> {
+  ): Observable<HttpResponse<TResult>> {
     const resultResponse = this.sendHTTPRequest<any, TResult>(
       HttpMethod.GET,
       null,
@@ -46,7 +50,7 @@ export class HttpClientService {
   public delete<TResult>(
     path?: string,
     contentType?: string
-  ): Observable<TResult | null> {
+  ): Observable<HttpResponse<TResult>> {
     const resultResponse = this.sendHTTPRequest<any, TResult>(
       HttpMethod.DELETE,
       null,
@@ -65,7 +69,7 @@ export class HttpClientService {
     path?: string,
     params?: HttpParams,
     contentType?: string
-  ): Observable<TResult> {
+  ): Observable<HttpResponse<TResult>> {
     const options = {
       headers: new HttpHeaders({
         'content-type': contentType ?? 'application/json',
@@ -75,30 +79,36 @@ export class HttpClientService {
       body,
     };
 
+    this.spinLoadService.enableSpinLoad = true;
     const requestResult = this.httpClient.request<HttpResponse<TResult>>(
       method,
-      this.apiUrl + path ?? '',
+      this.apiUrl + (path ?? ''),
       options
     );
-    const resultResponse = requestResult.pipe<TResult, TResult>(
-      this.mapContentObservable(),
-      this.handleErrorObservable()
-    );
+    const resultResponse = requestResult.pipe<
+      HttpResponse<TResult>,
+      HttpResponse<TResult>
+    >(this.mapContentObservable(), this.handleErrorObservable());
 
     return resultResponse;
   }
 
   private mapContentObservable<TResult>() {
     return map((response: HttpResponse<TResult>) => {
-      return response?.dados;
+      this.spinLoadService.enableSpinLoad = false;
+      return response;
     });
   }
 
   private handleErrorObservable<TResult>() {
-    return catchError<TResult, Observable<TResult>>(
-      (erro: any, caught: Observable<TResult>) => {
-        //dlkjdçlkjdçl
-        return new Observable<TResult>();
+    return catchError<HttpResponse<TResult>, Observable<HttpResponse<TResult>>>(
+      (erro: any, caught: Observable<HttpResponse<TResult>>) => {
+        this.spinLoadService.enableSpinLoad = false;
+
+        return throwError(() => erro);
+        // return new Observable<HttpResponse<TResult>>((subscriber) => {
+        //   subscriber.next();
+        // });
       }
     );
   }

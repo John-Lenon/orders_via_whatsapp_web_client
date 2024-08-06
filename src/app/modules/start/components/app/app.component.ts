@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { SpinLoadComponent } from 'src/app/shared/components/spin-load/spin-load.component';
+import { AlertService } from 'src/app/shared/services/alert.service';
+import { SpinLoadService } from 'src/app/shared/services/spin-load.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  ngOnInit(): void {}
+  constructor(
+    public spinLoadService: SpinLoadService,
+    public alertService: AlertService
+  ) {
+    this.spinLoadService.enableSpinLoad = true;
+  }
+
+  ngOnInit(): void {
+    this.spinLoadService.enableSpinLoad = false;
+  }
 }

@@ -33,7 +33,7 @@ export class ProdutoTableTestComponent
 
   getAllProductsToGrid(): void {
     this.httpClient.get<Produto[]>('produto').subscribe((listaProdutos) => {
-      this.dataSource.data = listaProdutos ?? [];
+      this.dataSource.data = listaProdutos?.dados ?? [];
     });
   }
 

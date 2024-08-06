@@ -1,1 +1,40 @@
-<div>Alerta teste</div>
+@for(item of alertService.alertList; track item; let i = $index){
+
+<div class="lista-alertas">
+  <div
+    class="alert-container alert-width"
+    [class.alert-container-info]="item.type === 1"
+    [class.alert-container-success]="item.type === 2"
+    [class.alert-container-warn]="item.type === 4"
+    [class.alert-container-error]="item.type === 5"
+    [style.bottom]="alertService.showAlert ? i * 15 + 5 + 'px' : '-100px'"
+  >
+    <div class="titulo-alerta">
+      <p>{{ alertTitle[item.type] }}</p>
+
+      <mat-icon
+        (click)="closeAlert()"
+        class="button-close"
+        aria-hidden="false"
+        fontIcon="close"
+      >
+      </mat-icon>
+    </div>
+
+    <div class="alerta-message">
+      <div class="icon">
+        @if(item.type === 1) {
+        <span class="material-symbols-outlined">info</span>
+        } @if(item.type === 2){
+        <span class="material-symbols-outlined">check</span>
+        } @if(item.type === 4){
+        <span class="material-symbols-outlined">warning</span>
+        } @if(item.type === 5){
+        <span class="material-symbols-outlined"> error </span>
+        }
+      </div>
+      <p>{{ item.text }}</p>
+    </div>
+  </div>
+</div>
+}

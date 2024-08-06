@@ -4,31 +4,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../../core/core.module';
-import { SharedModule } from '../../shared/shared.module';
 import { MenuRestaurantModule } from '../menu-restaurant/menu-restaurant.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
+import { provideLottieOptions } from 'ngx-lottie';
 
-// const MY_DATE_FORMATS: MatDateFormats = {
-//   parse: {
-//     dateInput: 'DD/MM/YYYY',
-//   },
-//   display: {
-//     dateInput: 'DD/MM/YYYY',
-//     monthYearLabel: 'MMM YYYY',
-//     dateA11yLabel: 'LL',
-//     monthYearA11yLabel: 'MMMM YYYY',
-//   },
-// };
+import player from 'lottie-web';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     // User Code
     AppRoutingModule,
-    CoreModule, 
+    CoreModule,
     MenuRestaurantModule,
 
     // Material UI
@@ -37,11 +26,15 @@ import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule 
     // Framework Code
     BrowserAnimationsModule,
     BrowserModule,
-    CommonModule 
+    CommonModule,
+
+    SharedModule,
   ],
-  providers: [  
-    // { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+  providers: [
+    provideLottieOptions({
+      player: () => player,
+    }),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

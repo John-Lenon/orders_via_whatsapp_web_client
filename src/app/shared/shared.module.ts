@@ -13,9 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -35,7 +33,6 @@ import {
   MAT_DATE_LOCALE,
   MatDateFormats,
   MatNativeDateModule,
-  NativeDateAdapter,
 } from '@angular/material/core';
 
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
@@ -49,6 +46,8 @@ import { TimeInputComponent } from './components/time-input/time-input.component
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { CardContainerComponent } from './components/card-container/card-container.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
+import { SpinLoadComponent } from './components/spin-load/spin-load.component';
 
 const MY_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -80,6 +79,8 @@ const MY_DATE_FORMATS: MatDateFormats = {
     TimeInputComponent,
     CardContainerComponent,
     AlertComponent,
+
+    SpinLoadComponent,
   ],
   imports: [
     CommonModule,
@@ -108,6 +109,8 @@ const MY_DATE_FORMATS: MatDateFormats = {
 
     NgxMaskDirective,
     NgxMaskPipe,
+
+    LottieComponent,
   ],
   exports: [
     ModalComponent,
@@ -122,6 +125,8 @@ const MY_DATE_FORMATS: MatDateFormats = {
     TimeInputComponent,
     CardContainerComponent,
     AlertComponent,
+    LottieComponent,
+    SpinLoadComponent,
 
     MatPaginatorModule,
     MatTableModule,

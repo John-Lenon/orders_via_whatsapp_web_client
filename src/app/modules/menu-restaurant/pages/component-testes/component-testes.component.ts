@@ -4,6 +4,9 @@ import { CarrinhoComponent } from '../../components/carrinho/carrinho.component'
 import { MessageModalComponent } from 'src/app/shared/components/message-modal/message-modal.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
+import { AlertConfig } from 'src/app/shared/models/alertConfig';
+import { AlertType } from 'src/app/shared/enums/alertType';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-component-testes',
@@ -11,7 +14,39 @@ import { AlertComponent } from 'src/app/shared/components/alert/alert.component'
   styleUrls: ['./component-testes.component.css'],
 })
 export class ComponentTestesComponent {
-  constructor(private dialog: MatDialog, private _snackBar: MatSnackBar) {}
+  showAlert: boolean = false;
+
+  constructor(
+    private dialog: MatDialog,
+    private _snackBar: MatSnackBar,
+    private alertService: AlertService
+  ) {}
+
+  listaAlertas: AlertConfig[] = [
+    {
+      type: AlertType.INFORMATION,
+      text: 'Essa é uma informação de teste',
+    },
+    {
+      type: AlertType.SUCCESS,
+      text: 'Parabéns houve sucesso na operação',
+    },
+    {
+      type: AlertType.WARNING,
+      text: 'Desculpe mas ocorreu um alerta aqui...',
+    },
+    {
+      type: AlertType.ERROR,
+      text: 'Houve um erro interno no servidor',
+    },
+  ];
+
+  novoAlerta() {
+    this.alertService.addNewAlert({
+      type: AlertType.WARNING,
+      text: 'Ocorreu um novo erro',
+    });
+  }
 
   exibirCarrinho() {
     // Abre o Modal e atribui uma referência dele a variável "dialogRef"

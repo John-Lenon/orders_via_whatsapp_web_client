@@ -6,6 +6,8 @@ import { CustomValidator } from 'src/app/shared/utils/custom-validator';
 import { Login } from '../../models/login';
 import { UserToken } from '../../models/user-token';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/shared/services/alert.service';
+import { AlertType } from 'src/app/shared/enums/alertType';
 
 @Component({
   selector: 'app-auth-login',
@@ -17,7 +19,11 @@ export class AuthLoginComponent extends FormBase {
     this.getStoredLoging()
   ).valueOf();
 
-  constructor(private httpClient: HttpClientService, private router: Router) {
+  constructor(
+    private httpClient: HttpClientService,
+    private alertService: AlertService,
+    private router: Router
+  ) {
     super();
 
     this.controlesFormulario = {
@@ -49,8 +55,14 @@ export class AuthLoginComponent extends FormBase {
     this.httpClient
       .post<Login, UserToken>(form, 'usuario/login')
       .subscribe((result) => {
-        const token = result?.token;
+        const token = result?.dados?.token;
         localStorage.setItem('auth_token', token ?? '');
+
+        this.alertService.addNewAlert({
+          type: AlertType.SUCCESS,
+          text: 'Parabéns você foi logado com sucesso!',
+        });
+
         this.router.navigateByUrl('admin');
       });
   }
