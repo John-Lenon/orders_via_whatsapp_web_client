@@ -49,7 +49,8 @@ export class AuthLoginComponent extends FormBase {
     };
   }
 
-  submitFormulario(): void {
+  submitFormulario(event: Event): void {
+    event.preventDefault();
     const form = this.getFormData<Login>();
 
     this.httpClient
@@ -78,6 +79,12 @@ export class AuthLoginComponent extends FormBase {
       localStorage.removeItem('stored_password');
       localStorage.removeItem('stored_email');
     }
+  }
+
+  showOrHidePassword(event: Event, inputPassword: any) {
+    const showPassword = (<any>event.target)['checked'];
+    if (showPassword) inputPassword.type = 'text';
+    else inputPassword.type = 'password';
   }
 
   getStoredLoging(): Login | null {

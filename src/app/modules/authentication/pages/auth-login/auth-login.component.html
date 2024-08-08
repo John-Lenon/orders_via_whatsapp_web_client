@@ -1,4 +1,4 @@
-<div class="card-container form-container">
+<form class="card-container form-container" (submit)="submitFormulario($event)">
   <h2>Administração</h2>
   <div class="circulo-img">
     <img src="../../../../../assets/computador.png" width="100" height="100" />
@@ -23,8 +23,20 @@
       <app-text-input
         [formControlConfig]="controlesFormulario.senha"
         [type]="'password'"
+        #password
       >
       </app-text-input>
+    </div>
+
+    <div class="input-container">
+      <div class="checkbox">
+        <input
+          type="checkbox"
+          [checked]="false"
+          (change)="showOrHidePassword($event, password)"
+        />
+        <span>Mostrar Senha</span>
+      </div>
     </div>
 
     <div class="input-container">
@@ -40,9 +52,8 @@
   </div>
 
   <app-button
-    (click)="submitFormulario()"
     [grownWidth]="true"
     [backgroundColor]="'#000000'"
     [text]="'Login'"
   ></app-button>
-</div>
+</form>

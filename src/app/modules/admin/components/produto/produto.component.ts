@@ -116,8 +116,6 @@ export class ProdutoComponent extends FormBase {
 
   submitFormulario(): void {
     const novoProduto = this.getFormData<Produto>();
-
-    debugger;
     this.httpService
       .post<Produto, any>(novoProduto, 'produto')
       .subscribe(() => {});

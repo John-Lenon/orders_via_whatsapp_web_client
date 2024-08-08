@@ -106,9 +106,6 @@ export class HttpClientService {
         this.spinLoadService.enableSpinLoad = false;
 
         return throwError(() => erro);
-        // return new Observable<HttpResponse<TResult>>((subscriber) => {
-        //   subscriber.next();
-        // });
       }
     );
   }
