@@ -1,9 +1,13 @@
-<app-sidenav></app-sidenav>
-<div admin-content-app>
-  <div class="header-company">
-    <span class="titulo-company">Engenheiros</span>
+<div class="header-company">
+  <app-sidenav class="side-nav-bar"></app-sidenav>
+  <span class="titulo-company">{{ empresa?.nomeFantasia }}</span>
+  <div class="items-header">
+    <span class="material-symbols-outlined">settings</span>
+    <span class="material-symbols-outlined">logout</span>
   </div>
-  <hr />
+</div>
+
+<div class="home-admin">
   <div class="container-router">
     <router-outlet></router-outlet>
   </div>

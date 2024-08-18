@@ -1,7 +1,7 @@
-export class HorarioFuncionamento {
-  
+import { EnumDiaSemana } from '../enums/enum-dia-semana';
 
-  constructor(){
-
-  }
+export interface HorarioFuncionamento {
+  Hora: Number;
+  Minutos: Number;
+  DiaSemana: EnumDiaSemana;
 }

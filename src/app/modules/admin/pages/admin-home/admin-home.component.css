@@ -1,28 +1,67 @@
-:host {
-  [admin-content-app] {
-    margin-left: 70px;
-  }
+.home-admin {
+  display: grid;
+  background-color: rgb(245, 247, 250);
+  width: 100%;
+  height: 100%;
+  grid-template-rows: 40px 10px 1fr;
+}
 
-  @media screen and (max-width: 600px) {
-    [admin-content-app] {
-      margin-left: 0;
-    }
+@media screen and (min-width: 1px) {
+  .home-admin {
+    grid-template-columns: 0px 15px 1fr 15px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .home-admin {
+    grid-template-columns: 60px 15px 1fr 15px;
   }
 }
 
 .header-company {
+  display: grid;
+  grid-template-columns: 60px 3fr 1fr;
+  grid-template-rows: 40px;
+  box-shadow: 0px 0px 2px #afafaf;
+  background-color: #fff;
+
+  position: fixed;
+  width: 100%;
   height: 40px;
-  display: flex;
-  align-items: center;
+  top: 0px;
+  left: 0px;
 
   & .titulo-company {
-    font-size: 1.3rem;
+    font-size: 1rem;
     margin-left: 15px;
-    font-weight: 550;
-    color: #595959;
+    font-weight: 500;
+    color: #000000;
+  }
+
+  & span {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  & .items-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    & span {
+      margin-right: 15px;
+    }
   }
 }
 
+.side-nav-bar {
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+
 .container-router {
-  margin: 15px 15px 15px 15px;
+  grid-column: 3/4;
+  grid-row: 3/4;
 }

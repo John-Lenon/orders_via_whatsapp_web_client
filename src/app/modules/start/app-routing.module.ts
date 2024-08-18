@@ -4,7 +4,6 @@ import { authGuard } from 'src/app/core/guards/auth.guard';
 import { ComponentTestesComponent } from '../menu-restaurant/pages/component-testes/component-testes.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { RoutePathStart } from './utils/route-path-stat';
-import { MenuRestaurantComponent } from '../menu-restaurant/pages/menu-restaurant/menu-restaurant.component';
 
 const routes: Routes = [
   {

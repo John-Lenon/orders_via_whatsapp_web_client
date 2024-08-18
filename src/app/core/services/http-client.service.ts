@@ -20,6 +20,7 @@ export class HttpClientService {
   public post<TBody, TResult>(
     body?: TBody,
     path?: string,
+    stopLoadSpin: Boolean = false,
     contentType?: string
   ): Observable<HttpResponse<TResult>> {
     var resultResponse = this.sendHTTPRequest<TBody, TResult>(
@@ -27,6 +28,7 @@ export class HttpClientService {
       body,
       path,
       undefined,
+      stopLoadSpin,
       contentType
     );
     return resultResponse;
@@ -35,6 +37,7 @@ export class HttpClientService {
   public get<TResult>(
     path?: string,
     params?: HttpParams,
+    stopLoadSpin: Boolean = true,
     contentType?: string
   ): Observable<HttpResponse<TResult>> {
     const resultResponse = this.sendHTTPRequest<any, TResult>(
@@ -42,6 +45,7 @@ export class HttpClientService {
       null,
       path,
       params,
+      stopLoadSpin,
       contentType
     );
     return resultResponse;
@@ -49,6 +53,7 @@ export class HttpClientService {
 
   public delete<TResult>(
     path?: string,
+    stopLoadSpin: Boolean = true,
     contentType?: string
   ): Observable<HttpResponse<TResult>> {
     const resultResponse = this.sendHTTPRequest<any, TResult>(
@@ -56,6 +61,7 @@ export class HttpClientService {
       null,
       path,
       undefined,
+      stopLoadSpin,
       contentType
     );
     return resultResponse;
@@ -68,6 +74,7 @@ export class HttpClientService {
     body?: TBody,
     path?: string,
     params?: HttpParams,
+    stopLoadSpin: Boolean = true,
     contentType?: string
   ): Observable<HttpResponse<TResult>> {
     const options = {
@@ -85,28 +92,22 @@ export class HttpClientService {
       this.apiUrl + (path ?? ''),
       options
     );
+
     const resultResponse = requestResult.pipe<
       HttpResponse<TResult>,
       HttpResponse<TResult>
-    >(this.mapContentObservable(), this.handleErrorObservable());
+    >(
+      map((response) => {
+        this.spinLoadService.enableSpinLoad = !stopLoadSpin;
+        return response;
+      }),
+
+      catchError((erro, caught) => {
+        this.spinLoadService.enableSpinLoad = false;
+        return throwError(() => erro);
+      })
+    );
 
     return resultResponse;
-  }
-
-  private mapContentObservable<TResult>() {
-    return map((response: HttpResponse<TResult>) => {
-      this.spinLoadService.enableSpinLoad = false;
-      return response;
-    });
-  }
-
-  private handleErrorObservable<TResult>() {
-    return catchError<HttpResponse<TResult>, Observable<HttpResponse<TResult>>>(
-      (erro: any, caught: Observable<HttpResponse<TResult>>) => {
-        this.spinLoadService.enableSpinLoad = false;
-
-        return throwError(() => erro);
-      }
-    );
   }
 }

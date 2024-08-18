@@ -8,6 +8,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { MenuManagementComponent } from './pages/menu-management/menu-management.component';
 import { UsersComponent } from './pages/users/users.component';
+import { SubTitleComponent } from './components/sub-title/sub-title.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { UsersComponent } from './pages/users/users.component';
     UsersComponent,
     ProdutoComponent,
     SideNavComponent,
+    SubTitleComponent,
   ],
   imports: [SharedModule, AdminRoutingModule, CommonModule],
   exports: [ProdutoComponent],

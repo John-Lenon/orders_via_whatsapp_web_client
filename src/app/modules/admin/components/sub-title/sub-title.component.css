@@ -1,0 +1,10 @@
+p {
+  align-items: center;
+  display: flex;
+  font-weight: 500;
+  margin: 8px 0px 10px 0px;
+
+  & span {
+    margin-left: 5px;
+  }
+}

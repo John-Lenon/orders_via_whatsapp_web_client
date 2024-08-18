@@ -1,30 +1,30 @@
 @media (min-width: 300px) {
   .alert-width {
-    width: 87vw;
+    width: 86%;
   }
 }
 
 @media (min-width: 800px) {
   .alert-width {
-    width: 94vw;
+    width: 92%;
   }
 }
 
 @media (min-width: 1000px) {
   .alert-width {
-    width: 95vw;
+    width: 94%;
   }
 }
 
 @media (min-width: 1400px) {
   .alert-width {
-    width: 96vw;
+    width: 95%;
   }
 }
 
 @media (min-width: 1720px) {
   .alert-width {
-    width: 97vw;
+    width: 96%;
   }
 }
 
