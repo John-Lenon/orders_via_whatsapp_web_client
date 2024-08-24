@@ -3,22 +3,27 @@
     padding: 20px;
     height: 80px;
     background-color: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    .mat-icon {
-      border: solid 3px #000;
-      border-radius: 4px;
-      padding: 2px;
-      position: absolute;
-      top: 135px;
-      right: 25px;
-      font-size: 24px;
-      color: #333;
+    .button-upload-capa {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+
+      .mat-icon {
+        border: solid 3px #000;
+        border-radius: 4px;
+        padding: 2px;
+
+        font-size: 24px;
+        color: #333;
+      }
     }
 
-    .nenhuma-capa-fundo {
+    .capa-fundo-descricao {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
       margin: 0;
       font-family: Arial, sans-serif;
       font-size: 14px;

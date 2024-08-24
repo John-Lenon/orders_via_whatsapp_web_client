@@ -1,5 +1,4 @@
 @import "reset-default-css-browser.css";
-@import "../admin/admin-page.css";
 
 /* Componentes renderizados via sistema de roteamento */
 app-root {

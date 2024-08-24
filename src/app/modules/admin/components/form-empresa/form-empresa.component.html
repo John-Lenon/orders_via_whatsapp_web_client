@@ -1,55 +1,53 @@
 <div class="card-container form-empresa">
-  <div class="card-title">
+  <div class="title">
     <mat-icon>home</mat-icon>
     <p>Informações Principais</p>
   </div>
 
-  <div class="card-body">
-    <div class="form">
-      <div class="logo">
-        <mat-icon>edit</mat-icon>
-      </div>
+  <div class="form">
+    <div class="logo">
+      <mat-icon>edit</mat-icon>
+    </div>
 
-      <div class="form-itens">
-        <div class="item">
-          <label>Nome da Empresa</label>
-          <app-text-input [formControlConfig]="controlesFormulario.nome">
-          </app-text-input>
-        </div>
-        <div class="item">
-          <label>Número Whatsapp</label>
-          <app-number-input
-            [formControlConfig]="controlesFormulario.numero"
-            [maskType]="3"
-          >
-          </app-number-input>
-        </div>
-        <div class="item">
-          <label>Email</label>
-          <app-text-input [formControlConfig]="controlesFormulario.email">
-          </app-text-input>
-        </div>
-        <div class="item">
-          <label>Status Loja</label>
-          <div class="toggle-button-status-loja">
-            <mat-radio-group>
-              <mat-radio-button class="toggle-selected-aberto" value="aberto"
-                >Aberto</mat-radio-button
-              >
-              <mat-radio-button class="toggle-selected-fechado" value="fechado"
-                >Fechado</mat-radio-button
-              >
-            </mat-radio-group>
-          </div>
+    <div class="form-itens">
+      <div class="item">
+        <label>Nome da Empresa</label>
+        <app-text-input [formControlConfig]="controlesFormulario.nome">
+        </app-text-input>
+      </div>
+      <div class="item">
+        <label>Número Whatsapp</label>
+        <app-number-input
+          [formControlConfig]="controlesFormulario.numero"
+          [maskType]="3"
+        >
+        </app-number-input>
+      </div>
+      <div class="item">
+        <label>Email</label>
+        <app-text-input [formControlConfig]="controlesFormulario.email">
+        </app-text-input>
+      </div>
+      <div class="item">
+        <label>Status Loja</label>
+        <div class="toggle-button-status-loja">
+          <mat-radio-group>
+            <mat-radio-button class="toggle-selected-aberto" value="aberto"
+              >Aberto</mat-radio-button
+            >
+            <mat-radio-button class="toggle-selected-fechado" value="fechado"
+              >Fechado</mat-radio-button
+            >
+          </mat-radio-group>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="button-save">
-      <button (click)="submitFormulario()">
-        <mat-icon>edit</mat-icon>
-        Alterar
-      </button>
-    </div>
+  <div class="button-save">
+    <button (click)="submitFormulario()">
+      <mat-icon>edit</mat-icon>
+      Alterar
+    </button>
   </div>
 </div>
