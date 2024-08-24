@@ -16,6 +16,7 @@ app-auth-home {
 app-admin-home {
   display: block;
   min-height: 100vh;
+  padding-bottom: 20px;
   background: linear-gradient(to right, #ffffff -7%, rgb(210 238 250) 52%);
 }
 
