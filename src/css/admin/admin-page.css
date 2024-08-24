@@ -1,0 +1,15 @@
+.page-admin-title {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  margin: 15px 0px 15px;
+  font-weight: bold;
+  font-size: 25px;
+
+  .mat-icon {
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
+    margin-right: 20px;
+  }
+}

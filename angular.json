@@ -21,9 +21,9 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/css/custom-theme.scss",
-              "src/css/styles.css",
-              "src/css/angular-custom-styles.css"
+              "src/css/angular/custom-theme.scss",
+              "src/css/angular/styles.css",
+              "src/css/angular/angular-custom-styles.css"
             ],
             "scripts": [],
             "browser": "src/main.ts"
@@ -88,8 +88,8 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/css/styles.css",
-              "src/css/angular-custom-styles.css"
+              "src/css/angular/styles.css",
+              "src/css/angular/angular-custom-styles.css"
             ],
             "scripts": []
           }

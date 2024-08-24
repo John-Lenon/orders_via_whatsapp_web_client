@@ -1,3 +1,58 @@
-<p>
-  company-management works!
-</p>
+<h1 class="page-admin-title">
+  <mat-icon>business</mat-icon>
+  {{ titleService.getTitle() }}
+</h1>
+<div class="card-container capa-fundo">
+  <p class="nenhuma-capa-fundo">Nenhuma capa de fundo</p>
+  <mat-icon>edit</mat-icon>
+</div>
+
+<div class="card-container form-empresa">
+  <div class="card-header">
+    <mat-icon>home</mat-icon>
+    <p>Informações Principais</p>
+  </div>
+
+  <div class="card-body">
+    <div class="form">
+      <div class="logo">
+        <mat-icon>edit</mat-icon>
+      </div>
+
+      <div class="form-itens">
+        <div class="item">
+          <label for="nome-empresa">Nome da Empresa</label>
+          <input id="nome-empresa" type="text" />
+        </div>
+        <div class="item">
+          <label for="numero-whatsapp">Número Whatsapp</label>
+          <input id="numero-whatsapp" type="text" />
+        </div>
+        <div class="item">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" />
+        </div>
+        <div class="item">
+          <label>Status Loja</label>
+          <div class="toggle-button-status-loja">
+            <mat-radio-group>
+              <mat-radio-button class="toggle-selected-aberto" value="aberto"
+                >Aberto</mat-radio-button
+              >
+              <mat-radio-button class="toggle-selected-fechado" value="fechado"
+                >Fechado</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-save">
+      <button>
+        <mat-icon>add_circle</mat-icon>
+        Salvar
+      </button>
+    </div>
+  </div>
+</div>
