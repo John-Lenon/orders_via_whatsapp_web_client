@@ -1,107 +1,11 @@
-<h1 class="page-admin-title">
+<app-sub-title [text]="titleService.getTitle()">
   <mat-icon>business</mat-icon>
-  {{ titleService.getTitle() }}
-</h1>
+</app-sub-title>
+
 <div class="card-container capa-fundo">
   <p class="nenhuma-capa-fundo">Nenhuma capa de fundo</p>
   <mat-icon>edit</mat-icon>
 </div>
 
-<div class="card-container form-empresa">
-  <div class="card-title">
-    <mat-icon>home</mat-icon>
-    <p>Informações Principais</p>
-  </div>
-
-  <div class="card-body">
-    <div class="form">
-      <div class="logo">
-        <mat-icon>edit</mat-icon>
-      </div>
-
-      <div class="form-itens">
-        <div class="item">
-          <label for="nome-empresa">Nome da Empresa</label>
-          <input id="nome-empresa" type="text" />
-        </div>
-        <div class="item">
-          <label for="numero-whatsapp">Número Whatsapp</label>
-          <input id="numero-whatsapp" type="text" />
-        </div>
-        <div class="item">
-          <label for="email">E-mail</label>
-          <input id="email" type="email" />
-        </div>
-        <div class="item">
-          <label>Status Loja</label>
-          <div class="toggle-button-status-loja">
-            <mat-radio-group>
-              <mat-radio-button class="toggle-selected-aberto" value="aberto"
-                >Aberto</mat-radio-button
-              >
-              <mat-radio-button class="toggle-selected-fechado" value="fechado"
-                >Fechado</mat-radio-button
-              >
-            </mat-radio-group>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="button-save">
-      <button>
-        <mat-icon>edit</mat-icon>
-        Alterar
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="card-container form-endereco">
-  <div class="card-title">
-    <mat-icon> location_on</mat-icon>
-    <p>Endereço</p>
-  </div>
-  <div class="card-body">
-    <div class="form">
-      <div class="form-itens">
-        <div class="item item-medium">
-          <label for="cep">CEP</label>
-          <input id="cep" type="text" />
-        </div>
-        <div class="item item-medium">
-          <label for="estado">Estado</label>
-          <input id="estado" type="text" />
-        </div>
-        <div class="item item-large">
-          <label for="bairro">Bairro</label>
-          <input id="bairro" type="text" />
-        </div>
-
-        <div class="item item-medium">
-          <label for="cidade">Cidade</label>
-          <input id="cidade" type="text" />
-        </div>
-        <div class="item item-large">
-          <label for="rua">Rua</label>
-          <input id="rua" type="text" />
-        </div>
-        <div class="item item-small">
-          <label for="numero">Número</label>
-          <input id="numero" type="text" />
-        </div>
-        <div class="item item-small">
-          <label for="complemento">Complemento</label>
-          <input id="complemento" type="text" />
-        </div>
-      </div>
-
-      <div class="button-save">
-        <button>
-          <mat-icon>edit</mat-icon>
-          Alterar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<app-form-empresa></app-form-empresa>
+<app-form-endereco></app-form-endereco>

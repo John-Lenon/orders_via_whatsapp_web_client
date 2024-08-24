@@ -20,6 +20,7 @@
 
 .header-company {
   display: grid;
+  background-color: rgb(245, 247, 250);
   grid-template-columns: 60px 3fr 1fr;
   grid-template-rows: 40px;
   box-shadow: 1px 0.2px 1px #000;

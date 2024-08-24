@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -6,8 +6,6 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './company-management.component.html',
   styleUrls: ['./company-management.component.css'],
 })
-export class CompanyManagementComponent implements OnInit {
+export class CompanyManagementComponent {
   constructor(public readonly titleService: Title) {}
-
-  ngOnInit() {}
 }

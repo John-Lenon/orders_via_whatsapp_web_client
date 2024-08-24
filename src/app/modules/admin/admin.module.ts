@@ -5,6 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
+import { FormEmpresaComponent } from './components/form-empresa/form-empresa.component';
+import { FormEnderecoComponent } from './components/form-endereco/form-endereco.component';
 import { ProdutoComponent } from './components/produto/produto.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { SubTitleComponent } from './components/sub-title/sub-title.component';
@@ -22,6 +24,8 @@ import { UsersComponent } from './pages/users/users.component';
     ProdutoComponent,
     SideNavComponent,
     SubTitleComponent,
+    FormEmpresaComponent,
+    FormEnderecoComponent,
   ],
   imports: [
     SharedModule,
