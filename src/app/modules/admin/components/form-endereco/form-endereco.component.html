@@ -5,13 +5,13 @@
   </div>
   <div class="card-body">
     <div class="form">
-      <div class="form-itens">
-        <div class="item item-medium">
+      <div class="group">
+        <div class="item">
           <label>Cep</label>
           <app-text-input [formControlConfig]="controlesFormulario.cep">
           </app-text-input>
         </div>
-        <div class="item item-medium">
+        <div class="item">
           <label>Estado</label>
           <app-text-input [formControlConfig]="controlesFormulario.estado">
           </app-text-input>
@@ -21,23 +21,25 @@
           <app-text-input [formControlConfig]="controlesFormulario.bairro">
           </app-text-input>
         </div>
+      </div>
 
-        <div class="item item-medium">
+      <div class="group">
+        <div class="item">
           <label>Cidade</label>
           <app-text-input [formControlConfig]="controlesFormulario.cidade">
           </app-text-input>
         </div>
-        <div class="item item-medium">
+        <div class="item">
           <label>Rua</label>
           <app-text-input [formControlConfig]="controlesFormulario.rua">
           </app-text-input>
         </div>
-        <div class="item">
+        <div class="item item-small">
           <label>Número</label>
           <app-text-input [formControlConfig]="controlesFormulario.numero">
           </app-text-input>
         </div>
-        <div class="item">
+        <div class="item item-small">
           <label>Complemento</label>
           <app-text-input [formControlConfig]="controlesFormulario.complemento">
           </app-text-input>
