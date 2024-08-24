@@ -67,3 +67,26 @@ app-menu-restaurant {
   border-radius: 10px;
   background-color: #fff;
 }
+
+.mat-typography {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0d3;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #c0c0c0d3;
+  }
+}
