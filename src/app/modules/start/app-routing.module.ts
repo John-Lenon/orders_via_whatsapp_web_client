@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { authGuard } from 'src/app/core/guards/auth.guard';
 import { ComponentTestesComponent } from '../menu-restaurant/pages/component-testes/component-testes.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { RoutePathStart } from './utils/route-path-stat';
@@ -16,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: RoutePathStart.ADMIN,
-    canActivate: [authGuard],
+    /* canActivate: [authGuard], */
     loadChildren: () =>
       import('../admin/admin.module').then((m) => m.AdminModule),
   },

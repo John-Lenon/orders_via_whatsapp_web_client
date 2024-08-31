@@ -1,21 +1,38 @@
 .card-container {
   &.capa-fundo {
-    padding: 20px;
-    height: 80px;
-    background-color: #e0e0e0;
+    padding: 0px;
+    height: 200px;
+
+    .capa-img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 10px;
+    }
 
     .button-upload-capa {
       width: 100%;
       display: flex;
       justify-content: end;
 
-      .mat-icon {
+      .icon-edit {
         border: solid 3px #000;
         border-radius: 4px;
-        padding: 2px;
+        padding: 4px;
+        height: 24px;
+        width: 24px;
+        margin: 5px;
 
-        font-size: 24px;
-        color: #333;
+        .mat-icon {
+          font-size: 24px;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: translateY(-3px);
+          }
+        }
       }
     }
 
@@ -23,7 +40,6 @@
       width: 100%;
       display: flex;
       justify-content: center;
-
       margin: 0;
       font-family: Arial, sans-serif;
       font-size: 14px;

@@ -6,8 +6,18 @@
 
   <div class="form">
     <div class="logo">
-      <mat-icon>edit</mat-icon>
+      <div class="logo-img" [ngStyle]="backgroundImageLogoStyle">
+        <div class="icon-edit" (click)="fileInputClick(fileInput)">
+          <mat-icon>edit</mat-icon>
+        </div>
+      </div>
     </div>
+    <input
+      type="file"
+      #fileInput
+      (change)="onFileSelected($event)"
+      style="display: none"
+    />
 
     <div class="form-itens">
       <div class="item">
