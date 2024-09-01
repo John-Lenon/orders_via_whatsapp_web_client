@@ -9,6 +9,8 @@ import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { MenuManagementComponent } from './pages/menu-management/menu-management.component';
 import { UsersComponent } from './pages/users/users.component';
 import { SubTitleComponent } from './components/sub-title/sub-title.component';
+import { ProdutoAdminComponent } from './components/produto-admin/produto-admin.component';
+import { CategoriaProdutoAdminComponent } from './components/categoria-produto-admin/categoria-produto-admin.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { SubTitleComponent } from './components/sub-title/sub-title.component';
     ProdutoComponent,
     SideNavComponent,
     SubTitleComponent,
+    ProdutoAdminComponent,
+    CategoriaProdutoAdminComponent,
   ],
   imports: [SharedModule, AdminRoutingModule, CommonModule],
   exports: [ProdutoComponent],

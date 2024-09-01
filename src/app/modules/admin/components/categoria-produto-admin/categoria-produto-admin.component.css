@@ -1,0 +1,15 @@
+.categoria {
+  padding: 20px 20px;
+  width: 100%;
+}
+
+.nome-categoria {
+  width: 20%;
+  display: block;
+}
+
+.container-buttons {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(95, 95, 104);
+}

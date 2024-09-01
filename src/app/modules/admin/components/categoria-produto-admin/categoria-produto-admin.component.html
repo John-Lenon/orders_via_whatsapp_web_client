@@ -1,0 +1,13 @@
+<form class="card-container categoria">
+  <app-text-input
+    class="nome-categoria"
+    [formControlConfig]="controlesFormulario.nomeDaCategoria"
+    [label]="'Nome da Categoria'"
+  ></app-text-input>
+
+  <div class="container-buttons">
+    <app-button [text]="'Novo Produto'"> </app-button>
+    <app-button [text]="'Remover Produto'" [backgroundColor]="'red'">
+    </app-button>
+  </div>
+</form>
