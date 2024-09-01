@@ -40,7 +40,6 @@ import { CategoriaProdutoAdminComponent } from './components/categoria-produto-a
     MatIconModule,
     MatRadioModule,
   ],
-  imports: [SharedModule, AdminRoutingModule, CommonModule],
   exports: [ProdutoComponent],
 })
 export class AdminModule {}
