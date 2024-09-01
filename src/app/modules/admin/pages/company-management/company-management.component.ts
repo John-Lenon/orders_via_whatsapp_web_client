@@ -34,20 +34,21 @@ export class CompanyManagementComponent implements OnInit {
   }
 
   getCapaFundo() {
-    this.companyService.getCapaEmpresa('12345678000101').subscribe({
+    this.companyService.getCapaEmpresa().subscribe({
       next: (imageBlob) => {
-        const objectURL = URL.createObjectURL(imageBlob);
-        this.backgroundImageCapaUrl = objectURL;
+        if (imageBlob.size > 150) {
+          const objectURL = URL.createObjectURL(imageBlob);
+          this.backgroundImageCapaUrl = objectURL;
+        }
       },
     });
   }
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
-    const cnpj = '12345678000101';
 
     if (file) {
-      this.companyService.uploadCapaEmpresa(cnpj, file).subscribe({
+      this.companyService.uploadCapaEmpresa(file).subscribe({
         next: (success) => {
           if (success) {
             const objectURL = URL.createObjectURL(file);

@@ -7,29 +7,23 @@ import { HttpClientService } from 'src/app/core/services/http-client.service';
 export class CompanyService {
   constructor(private httpClientService: HttpClientService) {}
 
-  public getCapaEmpresa(cnpj: string): Observable<Blob> {
-    const path = `empresa/get-capa-empresa?cnpj=${cnpj}`;
+  public getCapaEmpresa(): Observable<Blob> {
+    const path = `empresa/get-capa-empresa`;
     return this.httpClientService.getImage(path);
   }
 
-  public getLogoEmpresa(cnpj: string): Observable<Blob> {
-    const path = `empresa/get-logo-empresa?cnpj=${cnpj}`;
+  public getLogoEmpresa(): Observable<Blob> {
+    const path = `empresa/get-logo-empresa`;
     return this.httpClientService.getImage(path);
   }
 
-  public uploadCapaEmpresa(
-    cnpj: string,
-    file: File
-  ): Observable<HttpResponse<boolean>> {
-    const path = `empresa/upload-capa-empresa?cnpj=${cnpj}`;
+  public uploadCapaEmpresa(file: File): Observable<HttpResponse<boolean>> {
+    const path = `empresa/upload-capa-empresa`;
     return this.httpClientService.uploadImage(file, path);
   }
 
-  public uploadLogoEmpresa(
-    cnpj: string,
-    file: File
-  ): Observable<HttpResponse<boolean>> {
-    const path = `empresa/upload-logo-empresa?cnpj=${cnpj}`;
+  public uploadLogoEmpresa(file: File): Observable<HttpResponse<boolean>> {
+    const path = `empresa/upload-logo-empresa`;
     return this.httpClientService.uploadImage(file, path);
   }
 }

@@ -2,15 +2,14 @@
   <mat-icon>business</mat-icon>
 </app-sub-title>
 
-<div class="card-container capa-fundo">
-  <div class="capa-img" [ngStyle]="backgroundImageCapaStyle">
-    <div class="button-upload-capa" (click)="fileInputClick(fileInput)">
-      <div class="icon-edit"><mat-icon>edit</mat-icon></div>
-    </div>
-    <div class="capa-fundo-descricao">
-      <p *ngIf="!backgroundImageCapaUrl">Nenhuma capa de fundo</p>
-    </div>
+<div class="card-container capa-fundo" [ngStyle]="backgroundImageCapaStyle">
+  <div class="button-upload-capa" (click)="fileInputClick(fileInput)">
+    <div class="icon-edit"><mat-icon>edit</mat-icon></div>
   </div>
+  <div class="capa-fundo-descricao">
+    <p *ngIf="!backgroundImageCapaUrl">Nenhuma capa de fundo</p>
+  </div>
+
   <input
     type="file"
     #fileInput

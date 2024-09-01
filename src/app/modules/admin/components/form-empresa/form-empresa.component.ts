@@ -53,7 +53,7 @@ export class FormEmpresaComponent extends FormBase {
     if (this.backgroundImageLogoUrl) {
       return {
         'background-image': `url(${this.backgroundImageLogoUrl})`,
-        'background-color': 'none', // ou você pode simplesmente omitir esta linha se desejar
+        'background-color': 'transparent',
       };
     } else {
       return {
@@ -68,20 +68,21 @@ export class FormEmpresaComponent extends FormBase {
   }
 
   getLogoEmpresa() {
-    this.companyService.getLogoEmpresa('12345678000101').subscribe({
+    this.companyService.getLogoEmpresa().subscribe({
       next: (imageBlob) => {
-        const objectURL = URL.createObjectURL(imageBlob);
-        this.backgroundImageLogoUrl = objectURL;
+        if (imageBlob.size > 150) {
+          const objectURL = URL.createObjectURL(imageBlob);
+          this.backgroundImageLogoUrl = objectURL;
+        }
       },
     });
   }
 
   onFileSelected(event: any): void {
     const file: File = event.target.files[0];
-    const cnpj = '12345678000101';
 
     if (file) {
-      this.companyService.uploadLogoEmpresa(cnpj, file).subscribe({
+      this.companyService.uploadLogoEmpresa(file).subscribe({
         next: (success) => {
           if (success) {
             const objectURL = URL.createObjectURL(file);
