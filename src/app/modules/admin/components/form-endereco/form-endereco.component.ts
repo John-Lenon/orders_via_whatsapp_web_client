@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClientService } from 'src/app/core/services/http-client.service';
+import { Empresa } from 'src/app/modules/menu-restaurant/models/empresa';
 import { FormBase } from 'src/app/shared/components/base/form-base';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { CustomValidator } from 'src/app/shared/utils/custom-validator';
-import { Empresa } from '../../model/empresa.interface';
 
 @Component({
   selector: 'app-form-endereco',

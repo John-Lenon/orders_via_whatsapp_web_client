@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -31,6 +32,7 @@ import { UsersComponent } from './pages/users/users.component';
     SharedModule,
     AdminRoutingModule,
     CommonModule,
+    FormsModule,
     MatIconModule,
     MatRadioModule,
   ],

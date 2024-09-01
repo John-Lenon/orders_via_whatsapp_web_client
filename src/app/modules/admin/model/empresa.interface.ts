@@ -1,5 +1,14 @@
+import { EnumStatusFuncionamento } from '../../menu-restaurant/enums/enum-status-funcionamento';
+import { HorarioFuncionamento } from '../../menu-restaurant/models/horario-funcionamento';
+
 export interface Empresa {
-  nome: string;
-  numero: string;
-  email: string;
+  codigo: string;
+  nomeFantasia?: string;
+  razaoSocial?: string;
+  cnpj?: string;
+  dominio?: string;
+  numeroDoWhatsapp?: string;
+  email?: string;
+  statusDeFuncionamento?: EnumStatusFuncionamento;
+  HorariosDeFuncionamento?: HorarioFuncionamento[];
 }

@@ -61,7 +61,7 @@
         }
       }
 
-      .button-save {
+      .button-submit-form {
         width: 100%;
         display: flex;
         justify-content: end;
@@ -78,6 +78,12 @@
           cursor: pointer;
           display: flex;
           align-items: center;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: translateY(-3px);
+          }
 
           .mat-icon {
             color: #fff;

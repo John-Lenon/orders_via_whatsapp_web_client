@@ -34,6 +34,26 @@ export class HttpClientService {
     return resultResponse;
   }
 
+  public update<TBody, TResult>(
+    codigo: string,
+    path?: string,
+    body?: TBody,
+    stopLoadSpin: Boolean = true,
+    contentType?: string
+  ): Observable<HttpResponse<TResult>> {
+    path += `?codigo=${codigo}`;
+
+    var resultResponse = this.sendHTTPRequest<TBody, TResult>(
+      HttpMethod.PUT,
+      body,
+      path,
+      undefined,
+      stopLoadSpin,
+      contentType
+    );
+    return resultResponse;
+  }
+
   public get<TResult>(
     path?: string,
     params?: HttpParams,

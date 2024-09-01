@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HttpClientService } from 'src/app/core/services/http-client.service';
+import { EnumStatusFuncionamento } from 'src/app/modules/menu-restaurant/enums/enum-status-funcionamento';
 import { FormBase } from 'src/app/shared/components/base/form-base';
-import { AlertService } from 'src/app/shared/services/alert.service';
 import { CustomValidator } from 'src/app/shared/utils/custom-validator';
-import { Empresa } from '../../model/empresa.interface';
+import { Empresa } from '../../../admin/model/empresa.interface';
 import { CompanyService } from '../../services/company/company.service';
 
 @Component({
@@ -15,38 +14,16 @@ import { CompanyService } from '../../services/company/company.service';
 })
 export class FormEmpresaComponent extends FormBase {
   public backgroundImageLogoUrl: string | undefined;
+  statusDeFuncionamento: string;
+  empresa: Empresa;
 
   constructor(
-    private httpClient: HttpClientService,
-    private companyService: CompanyService,
-
-    private alertService: AlertService,
-    private router: Router
+    private httpClientService: HttpClientService,
+    private companyService: CompanyService
   ) {
     super();
-    this.onInit();
-    this.controlesFormulario = {
-      nome: {
-        controle: new FormControl('', [CustomValidator.required]),
-        mensagens: { required: 'Esse campo é obrigatório' },
-      },
-      numero: {
-        controle: new FormControl('', [CustomValidator.required]),
-        mensagens: {
-          required: 'Esse campo é obrigatório',
-        },
-      },
-      email: {
-        controle: new FormControl('', [
-          CustomValidator.required,
-          CustomValidator.email,
-        ]),
-        mensagens: {
-          required: 'Esse campo é obrigatório',
-          email: 'Email inválido.',
-        },
-      },
-    };
+    this.getLogoEmpresa();
+    this.initFormEmpresa();
   }
 
   get backgroundImageLogoStyle(): { [key: string]: string } {
@@ -63,10 +40,76 @@ export class FormEmpresaComponent extends FormBase {
     }
   }
 
-  onInit() {
-    this.getLogoEmpresa();
+  initFormEmpresa() {
+    this.httpClientService.get<Empresa>('empresa').subscribe({
+      next: (response) => {
+        this.empresa = response.dados;
+
+        this.controlesFormulario = {
+          nomeFantasia: {
+            controle: new FormControl(this.empresa.nomeFantasia, [
+              CustomValidator.required,
+            ]),
+            mensagens: { required: 'Esse campo é obrigatório' },
+          },
+          razaoSocial: {
+            controle: new FormControl(this.empresa.razaoSocial, [
+              CustomValidator.required,
+            ]),
+            mensagens: { required: 'Esse campo é obrigatório' },
+          },
+          cnpj: {
+            controle: new FormControl(this.empresa.cnpj, [
+              CustomValidator.required,
+            ]),
+            mensagens: { required: 'Esse campo é obrigatório' },
+          },
+          dominio: {
+            controle: new FormControl(this.empresa.dominio, [
+              CustomValidator.required,
+            ]),
+            mensagens: { required: 'Esse campo é obrigatório' },
+          },
+          numeroDoWhatsapp: {
+            controle: new FormControl(this.empresa.numeroDoWhatsapp, [
+              CustomValidator.required,
+            ]),
+            mensagens: {
+              required: 'Esse campo é obrigatório',
+            },
+          },
+          email: {
+            controle: new FormControl(this.empresa.email, [
+              CustomValidator.required,
+              CustomValidator.email,
+            ]),
+            mensagens: {
+              required: 'Esse campo é obrigatório',
+              email: 'Email inválido.',
+            },
+          },
+        };
+
+        this.getStatusDeFuncionamentoEmpresa();
+      },
+    });
   }
 
+  getStatusDeFuncionamentoEmpresa() {
+    switch (this.empresa.statusDeFuncionamento) {
+      case EnumStatusFuncionamento.Fechado:
+        this.statusDeFuncionamento = '0';
+        break;
+      case EnumStatusFuncionamento.Pausado:
+        this.statusDeFuncionamento = '1';
+        break;
+      case EnumStatusFuncionamento.AbertoAgora:
+        this.statusDeFuncionamento = '2';
+        break;
+    }
+  }
+
+  //#region Logo
   getLogoEmpresa() {
     this.companyService.getLogoEmpresa().subscribe({
       next: (imageBlob) => {
@@ -96,9 +139,17 @@ export class FormEmpresaComponent extends FormBase {
   fileInputClick(fileInput: HTMLInputElement): void {
     fileInput.click();
   }
+  //#endregion
 
   submitFormulario(): void {
-    debugger;
     let form = this.getFormData<Empresa>();
+
+    form.statusDeFuncionamento = parseInt(
+      this.statusDeFuncionamento
+    ) as EnumStatusFuncionamento;
+
+    this.httpClientService
+      .update(this.empresa.codigo, 'empresa', form)
+      .subscribe();
   }
 }
