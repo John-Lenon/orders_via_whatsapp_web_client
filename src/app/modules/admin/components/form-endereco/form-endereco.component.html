@@ -1,0 +1,57 @@
+<div class="card-container form-endereco">
+  <div class="card-title">
+    <mat-icon> location_on</mat-icon>
+    <p>Endereço</p>
+  </div>
+  <div class="card-body">
+    <div class="form">
+      <div class="group">
+        <div class="item">
+          <label>Cep</label>
+          <app-text-input [formControlConfig]="controlesFormulario.cep">
+          </app-text-input>
+        </div>
+        <div class="item">
+          <label>Estado</label>
+          <app-text-input [formControlConfig]="controlesFormulario.estado">
+          </app-text-input>
+        </div>
+        <div class="item item-large">
+          <label>Bairro</label>
+          <app-text-input [formControlConfig]="controlesFormulario.bairro">
+          </app-text-input>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="item">
+          <label>Cidade</label>
+          <app-text-input [formControlConfig]="controlesFormulario.cidade">
+          </app-text-input>
+        </div>
+        <div class="item">
+          <label>Rua</label>
+          <app-text-input [formControlConfig]="controlesFormulario.rua">
+          </app-text-input>
+        </div>
+        <div class="item item-small">
+          <label>Número</label>
+          <app-text-input [formControlConfig]="controlesFormulario.numero">
+          </app-text-input>
+        </div>
+        <div class="item item-small">
+          <label>Complemento</label>
+          <app-text-input [formControlConfig]="controlesFormulario.complemento">
+          </app-text-input>
+        </div>
+      </div>
+
+      <div class="button-submit-form">
+        <button>
+          <mat-icon>edit</mat-icon>
+          Alterar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, finalize, map, throwError } from 'rxjs';
+import { SpinLoadService } from 'src/app/shared/services/spin-load.service';
 import { environment } from '../../../environments/environment';
 import { HttpMethod } from '../enums/enum-http-method';
 import { HttpResponse } from '../http/http-response';
-import { SpinLoadService } from 'src/app/shared/services/spin-load.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +25,26 @@ export class HttpClientService {
   ): Observable<HttpResponse<TResult>> {
     var resultResponse = this.sendHTTPRequest<TBody, TResult>(
       HttpMethod.POST,
+      body,
+      path,
+      undefined,
+      stopLoadSpin,
+      contentType
+    );
+    return resultResponse;
+  }
+
+  public update<TBody, TResult>(
+    codigo: string,
+    path?: string,
+    body?: TBody,
+    stopLoadSpin: Boolean = true,
+    contentType?: string
+  ): Observable<HttpResponse<TResult>> {
+    path += `?codigo=${codigo}`;
+
+    var resultResponse = this.sendHTTPRequest<TBody, TResult>(
+      HttpMethod.PUT,
       body,
       path,
       undefined,
@@ -65,6 +85,46 @@ export class HttpClientService {
       contentType
     );
     return resultResponse;
+  }
+
+  public getImage(path?: string): Observable<Blob> {
+    this.spinLoadService.enableSpinLoad = true;
+
+    const requestResult = this.httpClient.request<Blob>(
+      HttpMethod.GET,
+      `${this.apiUrl}${path}`,
+      {
+        responseType: 'blob' as 'json',
+      }
+    );
+
+    const resultResponse = requestResult.pipe(
+      map((response) => {
+        return response;
+      }),
+      catchError((erro) => {
+        this.spinLoadService.enableSpinLoad = false;
+        return throwError(() => erro);
+      }),
+      finalize(() => {
+        this.spinLoadService.enableSpinLoad = false;
+      })
+    );
+
+    return resultResponse;
+  }
+
+  public uploadImage(
+    file: File,
+    path: string
+  ): Observable<HttpResponse<boolean>> {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+
+    return this.httpClient.post<HttpResponse<boolean>>(
+      `${this.apiUrl}${path}`,
+      formData
+    );
   }
 
   public patch() {}

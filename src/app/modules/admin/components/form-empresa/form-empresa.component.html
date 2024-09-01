@@ -1,0 +1,88 @@
+<div class="card-container form-empresa">
+  <div class="title">
+    <mat-icon>home</mat-icon>
+    <p>Informações Principais</p>
+  </div>
+
+  <div class="form">
+    <div class="logo" [ngStyle]="backgroundImageLogoStyle">
+      <div class="icon-edit" (click)="fileInputClick(fileInput)">
+        <mat-icon>edit</mat-icon>
+      </div>
+    </div>
+    <input
+      type="file"
+      #fileInput
+      (change)="onFileSelected($event)"
+      style="display: none"
+    />
+
+    <div class="form-itens" *ngIf="empresa">
+      <div class="item">
+        <label>Nome da Empresa</label>
+        <app-text-input [formControlConfig]="controlesFormulario.nomeFantasia">
+        </app-text-input>
+      </div>
+
+      <div class="item">
+        <label>Razão Social</label>
+        <app-text-input [formControlConfig]="controlesFormulario.razaoSocial">
+        </app-text-input>
+      </div>
+
+      <div class="item">
+        <label>CNPJ</label>
+        <app-number-input
+          [formControlConfig]="controlesFormulario.cnpj"
+          [maskType]="4"
+        >
+        </app-number-input>
+      </div>
+
+      <div class="item">
+        <label>Domínio</label>
+        <app-text-input [formControlConfig]="controlesFormulario.dominio">
+        </app-text-input>
+      </div>
+
+      <div class="item">
+        <label>Número Whatsapp</label>
+        <app-number-input
+          [formControlConfig]="controlesFormulario.numeroDoWhatsapp"
+          [maskType]="3"
+        >
+        </app-number-input>
+      </div>
+
+      <div class="item">
+        <label>Email</label>
+        <app-text-input [formControlConfig]="controlesFormulario.email">
+        </app-text-input>
+      </div>
+
+      <div class="item">
+        <label>Status Loja</label>
+        <div class="toggle-button-status-loja">
+          <mat-radio-group [(ngModel)]="statusDeFuncionamento">
+            <mat-radio-button class="toggle-selected-aberto" value="2"
+              >Aberto</mat-radio-button
+            >
+            <mat-radio-button class="toggle-selected-pausado" value="1"
+              >Pausado</mat-radio-button
+            >
+            <mat-radio-button class="toggle-selected-fechado" value="0"
+              >Fechado</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-submit-form">
+    <button (click)="submitFormulario()">
+      <mat-icon>edit</mat-icon>
+      Alterar
+    </button>
+  </div>
+</div>

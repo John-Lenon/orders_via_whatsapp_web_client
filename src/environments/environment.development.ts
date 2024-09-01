@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'http://localhost/orders-whatsapp/api/v1/',
+  apiUrl: 'https://localhost:7128/api/v1/',
 };

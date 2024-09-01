@@ -15,6 +15,7 @@ app-auth-home {
 app-admin-home {
   display: block;
   min-height: 100vh;
+  padding-bottom: 20px;
   background-color: rgb(245, 247, 250);
 }
 
@@ -23,12 +24,81 @@ app-menu-restaurant {
   min-height: 100vh;
 }
 
+.card-container.form-empresa {
+  .toggle-button-status-loja {
+    .mdc-radio__background::before {
+      background-color: #ffffff00;
+    }
+
+    .toggle-selected-aberto {
+      --mdc-radio-selected-icon-color: #00d51e;
+      --mdc-radio-selected-hover-icon-color: #00d51e;
+      --mdc-radio-selected-pressed-icon-color: #00d51e;
+      --mat-radio-checked-ripple-color: #00d51e;
+      --mdc-radio-selected-focus-icon-color: #00d51e;
+      --mdc-radio-unselected-hover-icon-color: #00d51e;
+    }
+
+    .toggle-selected-fechado {
+      --mdc-radio-selected-icon-color: #000;
+      --mdc-radio-selected-hover-icon-color: #000;
+      --mdc-radio-selected-pressed-icon-color: #000;
+      --mat-radio-checked-ripple-color: #000;
+      --mdc-radio-selected-focus-icon-color: #000;
+      --mdc-radio-unselected-hover-icon-color: #000;
+    }
+
+    .toggle-selected-pausado {
+      --mdc-radio-selected-icon-color: #d5bb00;
+      --mdc-radio-selected-hover-icon-color: #d5bb00;
+      --mdc-radio-selected-pressed-icon-color: #d5bb00;
+      --mat-radio-checked-ripple-color: #d5bb00;
+      --mdc-radio-selected-focus-icon-color: #d5bb00;
+      --mdc-radio-unselected-hover-icon-color: #d5bb00;
+    }
+
+    .mat-mdc-radio-button {
+      & .mdc-radio {
+        padding-left: 0px !important;
+      }
+    }
+
+    .mat-mdc-radio-group {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}
+
 /* Classes para estilizações globais */
 .card-container {
   box-shadow: 0px 0px 2px #afafaf;
   padding: 7px;
   border-radius: 10px;
   background-color: #fff;
+}
+
+.mat-typography {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0d3;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #c0c0c0d3;
+  }
 }
 
 

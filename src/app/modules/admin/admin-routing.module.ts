@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PagesTitlesEnum } from './enums/pages-titles.enum';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { CompanyManagementComponent } from './pages/company-management/company-management.component';
 import { DeliveryAreaComponent } from './pages/delivery-area/delivery-area.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
       },
       { path: RoutePathAdmin.USERS, component: UsersComponent },
       {
+        title: PagesTitlesEnum.manageCompany,
         path: RoutePathAdmin.MANAGE_COMPANY,
         component: CompanyManagementComponent,
       },
