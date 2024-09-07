@@ -5,7 +5,15 @@
   </div>
 
   <div class="form">
-    <div class="logo" [ngStyle]="backgroundImageLogoStyle">
+    <div
+      class="logo"
+      [ngStyle]="{
+        'background-image': backgroundImageLogoUrl
+          ? 'url(' + backgroundImageLogoUrl + ')'
+          : 'none',
+        'background-color': backgroundImageLogoUrl ? 'none' : '#e0e0e0'
+      }"
+    >
       <div class="icon-edit" (click)="fileInputClick(fileInput)">
         <mat-icon>edit</mat-icon>
       </div>

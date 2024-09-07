@@ -2,7 +2,15 @@
   <mat-icon>business</mat-icon>
 </app-sub-title>
 
-<div class="card-container capa-fundo" [ngStyle]="backgroundImageCapaStyle">
+<div
+  class="card-container capa-fundo"
+  [ngStyle]="{
+    'background-image': backgroundImageCapaUrl
+      ? 'url(' + backgroundImageCapaUrl + ')'
+      : 'none',
+    'background-color': backgroundImageCapaUrl ? 'none' : '#e0e0e0'
+  }"
+>
   <div class="button-upload-capa" (click)="fileInputClick(fileInput)">
     <div class="icon-edit"><mat-icon>edit</mat-icon></div>
   </div>
@@ -18,5 +26,5 @@
   />
 </div>
 
-<app-form-empresa></app-form-empresa>
-<app-form-endereco></app-form-endereco>
+<app-form-company></app-form-company>
+<app-form-address></app-form-address>

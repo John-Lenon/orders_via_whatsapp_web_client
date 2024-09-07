@@ -15,20 +15,6 @@ export class CompanyManagementComponent implements OnInit {
     private companyService: CompanyService
   ) {}
 
-  get backgroundImageCapaStyle(): { [key: string]: string } {
-    if (this.backgroundImageCapaUrl) {
-      return {
-        'background-image': `url(${this.backgroundImageCapaUrl})`,
-        'background-color': 'none',
-      };
-    } else {
-      return {
-        'background-image': 'none',
-        'background-color': '#e0e0e0',
-      };
-    }
-  }
-
   ngOnInit(): void {
     this.getCapaFundo();
   }

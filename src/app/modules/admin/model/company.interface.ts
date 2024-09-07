@@ -1,7 +1,7 @@
 import { EnumStatusFuncionamento } from '../../menu-restaurant/enums/enum-status-funcionamento';
 import { HorarioFuncionamento } from '../../menu-restaurant/models/horario-funcionamento';
 
-export interface Empresa {
+export interface Company {
   codigo: string;
   nomeFantasia?: string;
   razaoSocial?: string;

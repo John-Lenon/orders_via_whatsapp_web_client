@@ -1,48 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { HttpClientService } from 'src/app/core/services/http-client.service';
 import { EnumStatusFuncionamento } from 'src/app/modules/menu-restaurant/enums/enum-status-funcionamento';
 import { FormBase } from 'src/app/shared/components/base/form-base';
 import { CustomValidator } from 'src/app/shared/utils/custom-validator';
-import { Empresa } from '../../../admin/model/empresa.interface';
+import { Company } from '../../model/company.interface';
 import { CompanyService } from '../../services/company/company.service';
 
 @Component({
-  selector: 'app-form-empresa',
-  templateUrl: './form-empresa.component.html',
-  styleUrls: ['./form-empresa.component.css'],
+  selector: 'app-form-company',
+  templateUrl: './form-company.component.html',
+  styleUrls: ['./form-company.component.css'],
 })
-export class FormEmpresaComponent extends FormBase {
+export class FormCompanyComponent extends FormBase implements OnInit {
   public backgroundImageLogoUrl: string | undefined;
   statusDeFuncionamento: string;
-  empresa: Empresa;
+  empresa: Company;
 
-  constructor(
-    private httpClientService: HttpClientService,
-    private companyService: CompanyService
-  ) {
+  constructor(private companyService: CompanyService) {
     super();
+  }
+
+  ngOnInit() {
     this.getLogoEmpresa();
-    this.initFormEmpresa();
-  }
 
-  get backgroundImageLogoStyle(): { [key: string]: string } {
-    if (this.backgroundImageLogoUrl) {
-      return {
-        'background-image': `url(${this.backgroundImageLogoUrl})`,
-        'background-color': 'transparent',
-      };
-    } else {
-      return {
-        'background-image': 'none',
-        'background-color': '#e0e0e0',
-      };
-    }
-  }
-
-  initFormEmpresa() {
-    this.httpClientService.get<Empresa>('empresa').subscribe({
+    this.companyService.getCompany().subscribe({
       next: (response) => {
+        console.log('opa');
         this.empresa = response.dados;
 
         this.controlesFormulario = {
@@ -142,14 +125,12 @@ export class FormEmpresaComponent extends FormBase {
   //#endregion
 
   submitFormulario(): void {
-    let form = this.getFormData<Empresa>();
+    const form = this.getFormData<Company>();
 
     form.statusDeFuncionamento = parseInt(
       this.statusDeFuncionamento
     ) as EnumStatusFuncionamento;
 
-    this.httpClientService
-      .update(this.empresa.codigo, 'empresa', form)
-      .subscribe();
+    this.companyService.updateCompany(this.empresa.codigo, form);
   }
 }
