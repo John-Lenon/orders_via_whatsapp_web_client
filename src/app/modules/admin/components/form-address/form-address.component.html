@@ -13,7 +13,7 @@
         </div>
         <div class="item">
           <label>Estado</label>
-          <app-text-input [formControlConfig]="controlesFormulario.estado">
+          <app-text-input [formControlConfig]="controlesFormulario.uf">
           </app-text-input>
         </div>
         <div class="item item-large">
@@ -31,12 +31,14 @@
         </div>
         <div class="item">
           <label>Rua</label>
-          <app-text-input [formControlConfig]="controlesFormulario.rua">
+          <app-text-input [formControlConfig]="controlesFormulario.logradouro">
           </app-text-input>
         </div>
         <div class="item item-small">
           <label>Número</label>
-          <app-text-input [formControlConfig]="controlesFormulario.numero">
+          <app-text-input
+            [formControlConfig]="controlesFormulario.numeroLogradouro"
+          >
           </app-text-input>
         </div>
         <div class="item item-small">
@@ -47,7 +49,7 @@
       </div>
 
       <div class="button-submit-form">
-        <button>
+        <button (click)="submitFormulario()">
           <mat-icon>edit</mat-icon>
           Alterar
         </button>

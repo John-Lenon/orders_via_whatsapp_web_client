@@ -1,23 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
-import { FormEnderecoComponent } from './form-endereco.component';
+import { FormAddressComponent } from './form-address.component';
 
 describe('FormEnderecoComponent', () => {
-  let component: FormEnderecoComponent;
-  let fixture: ComponentFixture<FormEnderecoComponent>;
+  let component: FormAddressComponent;
+  let fixture: ComponentFixture<FormAddressComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormEnderecoComponent ]
-    })
-    .compileComponents();
+      declarations: [FormAddressComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormEnderecoComponent);
+    fixture = TestBed.createComponent(FormAddressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
